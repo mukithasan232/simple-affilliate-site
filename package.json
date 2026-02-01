@@ -1,0 +1,17 @@
+{
+    "name": "deal-dokan-project",
+    "version": "1.0.0",
+    "description": "DealDokan Affiliate Site with MCP Server",
+    "scripts": {
+        "setup": "cd mcp-server && npm install",
+        "start-server": "cd mcp-server && node index.js",
+        "start-admin": "cd mcp-server && node server.js",
+        "serve": "npm run start-admin"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "multer": "^2.0.2"
+    }
+}

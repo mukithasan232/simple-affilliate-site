@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DealDokan Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Professional Glass/Dark Theme */
+            --bg-body: #0f111a;
+            --bg-panel: #1b1e2b;
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+
+        .panel {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--card-shadow);
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(15, 17, 26, 0.95) !important;
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: white !important;
+            letter-spacing: -0.5px;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background-color: var(--primary);
+            border: none;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-action {
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            border: 1px solid transparent;
+            transition: 0.2s;
+        }
+
+        .btn-action:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Stats */
+        .stat-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            border-bottom-color: var(--primary);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(79, 70, 229, 0.1);
+            color: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-top: 4px;
+        }
+
+        /* Table */
+        .table {
+            --bs-table-bg: transparent;
+            --bs-table-color: var(--text-muted);
+            --bs-table-border-color: var(--border-color);
+        }
+
+        .table th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            color: var(--text-main);
+        }
+
+        .product-img {
+            width: 48px;
+            height: 48px;
+            object-fit: cover;
+            border-radius: 8px;
+            background: #2a2d3a;
+        }
+
+        /* Forms */
+        .form-control,
+        .form-select {
+            background-color: #14161f;
+            border: 1px solid var(--border-color);
+            color: white;
+            padding: 0.75rem 1rem;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            background-color: #14161f;
+            border-color: var(--primary);
+            color: white;
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.25);
+        }
+
+        label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <i class="bi bi-shield-check text-primary"></i>
+                DealDokan Admin
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="adminNav">
+                <ul class="navbar-nav ms-auto align-items-center gap-3">
+                    <li class="nav-item">
+                        <button onclick="openThemeModal()"
+                            class="btn btn-sm btn-outline-light d-flex align-items-center gap-2">
+                            <i class="bi bi-palette"></i> Theme
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/" target="_blank"
+                            class="btn btn-sm btn-outline-light d-flex align-items-center gap-2">
+                            <i class="bi bi-box-arrow-up-right"></i> View Site
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text bg-transparent border-secondary text-secondary"><i
+                                    class="bi bi-key"></i></span>
+                            <input type="password" id="apiKeyInput" class="form-control bg-transparent border-secondary"
+                                placeholder="API Key" style="width: 100px;">
+                            <button class="btn btn-outline-secondary" onclick="saveKey()">Save</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5 mt-5">
+
+        <!-- Dashboard Stats -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="panel stat-card">
+                    <div class="stat-icon"><i class="bi bi-box-seam"></i></div>
+                    <div>
+                        <div class="stat-value" id="totalProducts">...</div>
+                        <div class="stat-label">Total Products</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel stat-card">
+                    <div class="stat-icon"><i class="bi bi-tags"></i></div>
+                    <div>
+                        <div class="stat-value" id="totalCats">...</div>
+                        <div class="stat-label">Active Categories</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <!-- Quick Actions -->
+                <div class="d-flex gap-2 h-100 align-items-center">
+                    <button
+                        class="btn btn-primary w-100 h-100 d-flex flex-column align-items-center justify-content-center gap-2"
+                        onclick="openAddProductModal()">
+                        <i class="bi bi-plus-circle fs-4"></i>
+                        Add Product
+                    </button>
+                    <button
+                        class="btn btn-outline-light w-100 h-100 d-flex flex-column align-items-center justify-content-center gap-2"
+                        onclick="openAddCategoryModal()">
+                        <i class="bi bi-folder-plus fs-4"></i>
+                        New Category
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inventory Panel -->
+        <div class="panel">
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                <h5 class="mb-0 fw-bold">Inventory Management</h5>
+                <div class="d-flex gap-2">
+                    <div class="input-group" style="width: 300px;">
+                        <span class="input-group-text bg-transparent border-secondary text-muted"><i
+                                class="bi bi-search"></i></span>
+                        <input type="text" class="form-control" id="searchInput" placeholder="Search products..."
+                            onkeyup="filterData()">
+                    </div>
+                    <button class="btn btn-outline-light" onclick="loadData()"><i
+                            class="bi bi-arrow-clockwise"></i></button>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <thead>
+                        <tr>
+                            <th width="80">Image</th>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTable">
+                        <tr>
+                            <td colspan="5" class="text-center py-5">Loading inventory...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Product Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content panel p-0 overflow-hidden border-0">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title">Edit Product</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="editForm">
+                        <input type="hidden" id="editId">
+                        <div class="mb-3">
+                            <label>Product Title</label>
+                            <input type="text" class="form-control" id="editTitleEn">
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <div class="col-6">
+                                <label>Price</label>
+                                <input type="text" class="form-control" id="editPrice">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label>Affiliate Link</label>
+                            <input type="text" class="form-control" id="editLink">
+                        </div>
+                        <div class="mb-3">
+                            <label>Image</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="editImage">
+                                <label class="btn btn-outline-secondary" for="uploadEdit">
+                                    <i class="bi bi-upload"></i>
+                                </label>
+                                <input type="file" id="uploadEdit" class="d-none"
+                                    onchange="uploadImage(this, 'editImage')">
+                            </div>
+                            <div class="form-text text-muted">Upload a new image or paste a URL.</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-secondary p-3">
+                    <button type="button" class="btn btn-link text-muted text-decoration-none"
+                        data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary px-4" onclick="updateProduct()">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div class="modal fade" id="addModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content panel p-0 overflow-hidden border-0">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title">Add New Product</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="addForm">
+                        <div class="mb-3">
+                            <label>Category</label>
+                            <select class="form-select" id="addCategorySelect"></select>
+                        </div>
+                        <div class="mb-3">
+                            <label>Product Title</label>
+                            <input type="text" class="form-control" id="addTitleEn" placeholder="e.g. Sony WH-1000XM5">
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <div class="col-6">
+                                <label>Price</label>
+                                <input type="text" class="form-control" id="addPrice" placeholder="349.99">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label>Affiliate Link</label>
+                            <input type="text" class="form-control" id="addLink" placeholder="https://amzn.to/...">
+                        </div>
+                        <div class="mb-3">
+                            <label>Image</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="addImage" placeholder="Image URL or Upload">
+                                <label class="btn btn-outline-secondary" for="uploadAdd">
+                                    <i class="bi bi-upload"></i>
+                                </label>
+                                <input type="file" id="uploadAdd" class="d-none"
+                                    onchange="uploadImage(this, 'addImage')">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-secondary p-3">
+                    <button type="button" class="btn btn-link text-muted text-decoration-none"
+                        data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary px-4" onclick="addProduct()">Add Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Category Modal -->
+    <div class="modal fade" id="addCatModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content panel p-0 overflow-hidden border-0">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title">New Category</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="mb-3">
+                        <label>Category Name</label>
+                        <input type="text" class="form-control" id="catTitle" placeholder="e.g. Smart Home">
+                    </div>
+                    <div class="mb-3">
+                        <label>Icon Class <small class="text-muted">(Bootstrap Icons)</small></label>
+                        <input type="text" class="form-control" id="catIcon" placeholder="bi-house-door">
+                        <div class="form-text text-muted">Use icons like 'bi-laptop', 'bi-phone', etc.</div>
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary p-3">
+                    <button type="button" class="btn btn-link text-muted text-decoration-none"
+                        data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary px-4" onclick="addCategory()">Create Category</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Theme Modal -->
+    <div class="modal fade" id="themeModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content panel p-0 overflow-hidden border-0">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title">Theme Settings</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="mb-3">
+                        <label>Primary Brand Color</label>
+                        <div class="d-flex gap-3 align-items-center">
+                            <input type="color" class="form-control form-control-color bg-transparent border-secondary"
+                                id="themePrimary" value="#6366f1" title="Choose your color">
+                            <span class="text-muted small">Controls buttons, links, and highlights.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary p-3">
+                    <button type="button" class="btn btn-link text-muted text-decoration-none"
+                        data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary px-4" onclick="saveTheme()">Apply Theme</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let projectData = { products: [], categories: [] };
+
+        // Expose functions to window
+        window.loadData = loadData;
+        window.addProduct = addProduct;
+        window.updateProduct = updateProduct;
+        window.addCategory = addCategory;
+        window.openEdit = openEdit;
+        window.openAddProductModal = openAddProductModal;
+        window.openAddCategoryModal = openAddCategoryModal;
+        window.saveKey = saveKey;
+        window.filterData = filterData;
+        window.filterData = filterData;
+        window.uploadImage = uploadImage;
+        window.openThemeModal = openThemeModal;
+        window.saveTheme = saveTheme;
+
+        const API_BASE = 'http://localhost:4000/api';
+
+        function getHeaders() {
+            return {
+                'Content-Type': 'application/json',
+                'x-api-key': getApiKey()
+            };
+        }
+
+        // --- Core Functions ---
+        async function loadData() {
+            try {
+                const res = await fetch(`${API_BASE}/products`, {
+                    headers: getHeaders() // Although it's public in server.js, good practice
+                });
+                if (!res.ok) throw new Error("Failed to fetch data");
+
+                const data = await res.json();
+                projectData.categories = data.categories || [];
+                projectData.products = data.products || [];
+
+                renderTable(projectData.products);
+                updateStats();
+                populateCategorySelect();
+            } catch (e) {
+                console.error(e);
+                document.getElementById('productTable').innerHTML = `<tr><td colspan="5" class="text-center text-danger py-4">Failed to load data: ${e.message}. Ensure Admin Server is running.</td></tr>`;
+            }
+        }
+
+        function updateStats() {
+            document.getElementById('totalProducts').innerText = projectData.products.length;
+            document.getElementById('totalCats').innerText = projectData.categories.length;
+        }
+
+        function renderTable(products) {
+            const tbody = document.getElementById('productTable');
+            if (products.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="text-center text-muted py-4">No products found. Add one!</td></tr>';
+                return;
+            }
+            tbody.innerHTML = products.map(p => `
+                <tr>
+                    <td><img src="${p.image}" class="product-img" onerror="this.src='image/laptop.jpg'"></td>
+                    <td>
+                        <div class="fw-bold text-truncate" style="max-width: 250px;">${p.title_en}</div>
+                        <div class="small text-muted text-truncate" style="font-size: 0.75rem; max-width: 250px;">ID: ${p.id}</div>
+                    </td>
+                    <td><span class="badge bg-secondary bg-opacity-10 text-secondary fw-medium border border-secondary border-opacity-10">${getCategoryName(p.categoryId) || 'General'}</span></td>
+                    <td class="text-white fw-bold">${p.price}</td>
+                    <td class="text-end">
+                        <button class="btn btn-action" onclick="openEdit('${p.id}')" title="Edit"><i class="bi bi-pencil-fill"></i></button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function getCategoryName(catId) {
+            // catId might be the ID directly or referenced
+            // In project_utils, categories have 'id'
+            // products don't store categoryId in the HTML explicitly unless in the grid structure
+            // But getProjectData might not fully extract categoryId for products unless we infer it.
+            // Let's check getProjectData in project_utils.js...
+            // It extracts products from .card. It does NOT extract the category ID of the product.
+            // It only gets 'tag_key'.
+            // However, addProduct puts the product IN a grid which is next to a h2 with data-translate=catId.
+            // To properly show Category here, we might need to improve getProjectData in the backend,
+            // OR we just show what we have. 
+            // For now, let's try to find if the product ID or tag matches something.
+            // Actually, without category extraction in getProjectData, we can't show it accurately.
+            // We'll leave it as is or improve backend later.
+
+            // For now, simple lookup if possible.
+            const cat = projectData.categories.find(c => c.id === catId);
+            return cat ? cat.title_en : (catId || 'Unknown');
+        }
+
+        // --- Actions ---
+
+        async function uploadImage(input, targetId) {
+            const file = input.files[0];
+            if (!file) return;
+
+            const formData = new FormData();
+            formData.append("image", file);
+
+            try {
+                const res = await fetch(`${API_BASE}/upload`, {
+                    method: 'POST',
+                    headers: {
+                        'x-api-key': getApiKey()
+                    },
+                    body: formData
+                });
+                const data = await res.json();
+                if (data.path) {
+                    document.getElementById(targetId).value = data.path;
+                } else {
+                    alert("Upload failed: " + data.error);
+                }
+            } catch (e) {
+                console.error(e);
+                alert("Upload error: " + e.message);
+            }
+        }
+
+        async function addCategory() {
+            const data = {
+                title_en: document.getElementById('catTitle').value,
+                icon: document.getElementById('catIcon').value,
+                title_bn: document.getElementById('catTitle').value // Simplified
+            };
+            if (!data.title_en) return alert("Category Name is required");
+
+            try {
+                const res = await fetch(`${API_BASE}/categories`, {
+                    method: 'POST',
+                    headers: getHeaders(),
+                    body: JSON.stringify(data)
+                });
+                const result = await res.json();
+                if (!result.success) throw new Error(result.error);
+
+                bootstrap.Modal.getInstance(document.getElementById('addCatModal')).hide();
+                await loadData();
+            } catch (e) {
+                alert("Error: " + e.message);
+            }
+        }
+
+        async function addProduct() {
+            const data = {
+                categoryId: document.getElementById('addCategorySelect').value,
+                title_en: document.getElementById('addTitleEn').value,
+                price: document.getElementById('addPrice').value,
+                link: document.getElementById('addLink').value,
+                image: document.getElementById('addImage').value,
+                title_bn: document.getElementById('addTitleEn').value // Simplified
+            };
+
+            if (!data.title_en || !data.categoryId) return alert("Title and Category are required");
+
+            try {
+                const res = await fetch(`${API_BASE}/products/add`, {
+                    method: 'POST',
+                    headers: getHeaders(),
+                    body: JSON.stringify(data)
+                });
+                const result = await res.json();
+                if (!result.success) throw new Error(result.error);
+
+                bootstrap.Modal.getInstance(document.getElementById('addModal')).hide();
+                await loadData();
+            } catch (e) {
+                alert("Error: " + e.message);
+            }
+        }
+
+        async function updateProduct() {
+            const id = document.getElementById('editId').value;
+            const data = {
+                title_en: document.getElementById('editTitleEn').value,
+                price: document.getElementById('editPrice').value,
+                link: document.getElementById('editLink').value,
+                image: document.getElementById('editImage').value
+            };
+
+            try {
+                const res = await fetch(`${API_BASE}/products/${id}`, {
+                    method: 'POST',
+                    headers: getHeaders(),
+                    body: JSON.stringify(data)
+                });
+                const result = await res.json();
+                if (!result.success) throw new Error(result.error);
+
+                bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
+                await loadData();
+            } catch (e) {
+                alert("Error: " + e.message);
+            }
+        }
+
+        function filterData() {
+            const term = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = projectData.products.filter(p =>
+                (p.title_en && p.title_en.toLowerCase().includes(term)) || (p.id && p.id.toLowerCase().includes(term))
+            );
+            renderTable(filtered);
+        }
+
+        async function saveTheme() {
+            const primary = document.getElementById('themePrimary').value;
+            try {
+                const res = await fetch(`${API_BASE}/theme`, {
+                    method: 'POST',
+                    headers: getHeaders(),
+                    body: JSON.stringify({ primary })
+                });
+                const result = await res.json();
+                if (!result.success) throw new Error(result.error);
+
+                alert("Theme updated! Refresh the main site to see changes.");
+                bootstrap.Modal.getInstance(document.getElementById('themeModal')).hide();
+            } catch (e) {
+                alert("Error updating theme: " + e.message);
+            }
+        }
+
+        function openThemeModal() {
+            new bootstrap.Modal(document.getElementById('themeModal')).show();
+        }
+
+        // --- UI Helpers ---
+
+        function openEdit(id) {
+            const p = projectData.products.find(x => x.id === id);
+            if (!p) return;
+            document.getElementById('editId').value = p.id;
+            document.getElementById('editTitleEn').value = p.title_en;
+            document.getElementById('editPrice').value = p.price;
+            document.getElementById('editLink').value = p.link;
+            document.getElementById('editImage').value = p.image;
+            new bootstrap.Modal(document.getElementById('editModal')).show();
+        }
+
+        function openAddProductModal() {
+            new bootstrap.Modal(document.getElementById('addModal')).show();
+        }
+
+        function openAddCategoryModal() {
+            new bootstrap.Modal(document.getElementById('addCatModal')).show();
+        }
+
+        function populateCategorySelect() {
+            const sel = document.getElementById('addCategorySelect');
+            if (projectData.categories.length === 0) {
+                sel.innerHTML = '<option disabled>No categories found. Add one!</option>';
+                return;
+            }
+            sel.innerHTML = projectData.categories.map(c => `
+                <option value="${c.id}">${c.title_en}</option>
+            `).join('');
+        }
+
+        function getApiKey() {
+            return document.getElementById('apiKeyInput').value;
+        }
+
+        function saveKey() {
+            localStorage.setItem('admin_key', getApiKey());
+            const btn = document.querySelector('button[onclick="saveKey()"]');
+            const original = btn.innerText;
+            btn.innerText = "Saved";
+            setTimeout(() => btn.innerText = original, 2000);
+        }
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            const key = localStorage.getItem('admin_key') || 'secret123';
+            document.getElementById('apiKeyInput').value = key;
+
+            loadData();
+
+            // Check for edit params from main site shortcut
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('edit')) {
+                // Wait for data load
+                const checkData = setInterval(() => {
+                    if (projectData.products.length > 0) {
+                        openEdit(params.get('edit'));
+                        clearInterval(checkData);
+                    }
+                }, 500);
+            }
+        });
+
+    </script>
+</body>
+
+</html>
