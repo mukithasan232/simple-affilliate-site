@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import ThemeToggle from "./ThemeToggle";
+import SearchBar from "../ui/SearchBar";
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
@@ -28,6 +29,7 @@ export default function Navbar() {
                     <div className={`${styles.navLinks} ${isMenuOpen ? styles.active : ""}`}>
                         <Link href="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
                         <Link href="/categories" onClick={() => setIsMenuOpen(false)}>Categories</Link>
+                        <SearchBar />
                         <Link href="/blog" onClick={() => setIsMenuOpen(false)}>Blog</Link>
                         <Link href="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
                         <ThemeToggle />
