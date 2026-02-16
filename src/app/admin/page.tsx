@@ -87,7 +87,7 @@ export default function AdminPage() {
                 }
             });
             if (res.ok) fetchProducts();
-            else alert("Unauthorized or error");
+            else alert("Action failed. If you're on Vercel, ensure ADMIN_SECRET is set in project settings (fallback: admin123).");
         } catch (error) {
             alert("Delete failed");
         }

@@ -152,5 +152,43 @@
                 "a": "No, LPDDR5X memory is soldered."
             }
         ]
+    },
+    {
+        "id": "p5",
+        "title": "Samsung Odyssey G5 Curved Gaming Monitor",
+        "slug": "samsung-odyssey-g5-review",
+        "category": "Monitors",
+        "price": 279.99,
+        "oldPrice": 329.99,
+        "discount": 15,
+        "rating": 4.6,
+        "images": [
+            "https://m.media-amazon.com/images/I/81TjRLRecXL._AC_SX679_.jpg"
+        ],
+        "affiliateLink": "https://amzn.to/3TV8mY8",
+        "featured": true,
+        "badge": "Best Gaming Monitor",
+        "pros": [
+            "144Hz Refresh Rate",
+            "1000R Curve for Immersive Gaming",
+            "WQHD Resolution"
+        ],
+        "cons": [
+            "VA Panel viewing angles",
+            "Stand has limited adjustment"
+        ],
+        "specifications": {
+            "Display": "27 inch Curved",
+            "Resolution": "2560 x 1440 (WQHD)",
+            "Refresh Rate": "144Hz",
+            "Response Time": "1ms (MPRT)"
+        },
+        "description": "The Samsung Odyssey G5 is the perfect entry-level curved gaming monitor, providing an immersive experience without the premium price tag.",
+        "faqs": [
+            {
+                "q": "Is this monitor G-Sync compatible?",
+                "a": "It is FreeSync Premium certified and works well with G-Sync compatible cards over DisplayPort."
+            }
+        ]
     }
 ]
