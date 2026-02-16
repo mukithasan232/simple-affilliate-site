@@ -1,9 +1,6 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-import redis from "@/lib/redis"; // Import Redis utility
-
-const productsPath = path.join(process.cwd(), "src/data/products.json");
+import sql from "@/lib/db"; // Use Neon Postgres
+import products from "@/data/products.json"; // Fallback for initial seeding
 
 function isAdmin(req: Request) {
     const secret = req.headers.get("x-admin-secret");
@@ -11,49 +8,63 @@ function isAdmin(req: Request) {
     return secret === ADMIN_SECRET;
 }
 
-// Read products (Redis -> Local Fallback)
-async function getProducts() {
-    // 1. Try Redis first
-    if (redis) {
-        try {
-            const products = await redis.get<any[]>("products:all");
-            if (products) return products;
-        } catch (error) {
-            console.error("Redis Read Error:", error);
-        }
-    }
-
-    // 2. Fallback to local file
-    const data = fs.readFileSync(productsPath, "utf8");
-    const localProducts = JSON.parse(data);
-
-    // 3. Seed Redis if empty (Self-healing)
-    if (redis) {
-        try {
-            await redis.set("products:all", localProducts);
-        } catch (error) {
-            console.error("Redis Seed Error:", error);
-        }
-    }
-
-    return localProducts;
-}
-
-// Save products (Redis ONLY for production updates)
-async function saveProducts(products: any[]) {
-    if (redis) {
-        await redis.set("products:all", products);
-    } else {
-        // Fallback for local development without Redis env vars
-        fs.writeFileSync(productsPath, JSON.stringify(products, null, 4), "utf8");
-    }
+// Transform snake_case DB rows to camelCase frontend objects
+function mapProduct(row: any) {
+    return {
+        id: row.id,
+        title: row.title,
+        slug: row.slug,
+        category: row.category,
+        price: parseFloat(row.price),
+        oldPrice: row.old_price ? parseFloat(row.old_price) : null,
+        discount: row.discount ? parseFloat(row.discount) : null,
+        rating: row.rating ? parseFloat(row.rating) : 0,
+        images: row.images,
+        affiliateLink: row.affiliate_link,
+        featured: row.featured,
+        badge: row.badge,
+        pros: row.pros,
+        cons: row.cons,
+        description: row.description,
+        specifications: row.specifications,
+        faqs: row.faqs
+    };
 }
 
 export async function GET() {
-    try {
-        const products = await getProducts(); // Now async
+    // If no DB URL, return local JSON (development without DB)
+    if (!sql) {
         return NextResponse.json(products);
+    }
+
+    try {
+        const rows = await sql`SELECT * FROM products ORDER BY created_at DESC`;
+
+        // Auto-seed if empty
+        if (rows.length === 0 && products.length > 0) {
+            console.log("Seeding database with initial products...");
+            for (const p of products) {
+                await sql`
+                    INSERT INTO products (
+                        id, title, slug, category, price, old_price, discount, rating, 
+                        images, affiliate_link, featured, badge, pros, cons, description, specifications, faqs
+                    ) VALUES (
+                        ${p.id}, ${p.title}, ${p.slug}, ${p.category}, ${p.price}, 
+                        ${p.oldPrice || null}, ${p.discount || null}, ${p.rating}, 
+                        ${p.images}, ${p.affiliateLink}, ${p.featured || false}, ${p.badge || null}, 
+                        ${p.pros || []}, ${p.cons || []}, ${p.description || ""}, 
+                        ${JSON.stringify(p.specifications || {})}, ${JSON.stringify(p.faqs || [])}
+                    ) ON CONFLICT (id) DO NOTHING
+                `;
+            }
+            // Fetch again after seeding
+            const seededRows = await sql`SELECT * FROM products ORDER BY created_at DESC`;
+            return NextResponse.json(seededRows.map(mapProduct));
+        }
+
+        return NextResponse.json(rows.map(mapProduct));
     } catch (error) {
+        console.error("Database Error:", error);
         return NextResponse.json({ error: "Failed to load products" }, { status: 500 });
     }
 }
@@ -63,34 +74,60 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    if (!sql) {
+        return NextResponse.json({ error: "Database not configured" }, { status: 500 });
+    }
+
     try {
-        const newProduct = await req.json();
-        const products = await getProducts(); // Now async
+        const p = await req.json();
 
-        // Check if updating existing product
-        const existingIndex = products.findIndex((p: any) => p.id === newProduct.id);
-
-        if (existingIndex > -1) {
-            // Update existing
-            products[existingIndex] = { ...products[existingIndex], ...newProduct };
-        } else {
-            // Create new
-            if (!newProduct.id) {
-                newProduct.id = "p" + (products.length + 1);
-            }
-            if (!newProduct.slug && newProduct.title) {
-                newProduct.slug = newProduct.title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-            }
-            products.push(newProduct);
+        // 1. Generate ID if missing
+        if (!p.id) {
+            // Simple ID generation
+            p.id = `p${Date.now()}`;
         }
 
-        await saveProducts(products); // Now async & uses Redis if available
+        // 2. Generate slug if missing
+        if (!p.slug && p.title) {
+            p.slug = p.title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+        }
 
-        return NextResponse.json(newProduct);
+        // 3. Upsert (Insert or Update)
+        await sql`
+            INSERT INTO products (
+                id, title, slug, category, price, old_price, discount, rating, 
+                images, affiliate_link, featured, badge, pros, cons, description, specifications, faqs
+            ) VALUES (
+                ${p.id}, ${p.title}, ${p.slug}, ${p.category}, ${p.price}, 
+                ${p.oldPrice || null}, ${p.discount || null}, ${p.rating}, 
+                ${p.images}, ${p.affiliateLink}, ${p.featured || false}, ${p.badge || null}, 
+                ${p.pros || []}, ${p.cons || []}, ${p.description || ""}, 
+                ${JSON.stringify(p.specifications || {})}, ${JSON.stringify(p.faqs || [])}
+            )
+            ON CONFLICT (id) DO UPDATE SET
+                title = EXCLUDED.title,
+                slug = EXCLUDED.slug,
+                category = EXCLUDED.category,
+                price = EXCLUDED.price,
+                old_price = EXCLUDED.old_price,
+                discount = EXCLUDED.discount,
+                rating = EXCLUDED.rating,
+                images = EXCLUDED.images,
+                affiliate_link = EXCLUDED.affiliate_link,
+                featured = EXCLUDED.featured,
+                badge = EXCLUDED.badge,
+                pros = EXCLUDED.pros,
+                cons = EXCLUDED.cons,
+                description = EXCLUDED.description,
+                specifications = EXCLUDED.specifications,
+                faqs = EXCLUDED.faqs
+        `;
+
+        return NextResponse.json(p);
 
     } catch (error: any) {
         console.error("Save Error:", error);
-        return NextResponse.json({ error: "Failed to save product. Ensure Redis is configured." }, { status: 500 });
+        return NextResponse.json({ error: "Failed to save product" }, { status: 500 });
     }
 }
 
@@ -99,21 +136,17 @@ export async function DELETE(req: Request) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    if (!sql) {
+        return NextResponse.json({ error: "Database not configured" }, { status: 500 });
+    }
+
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
 
     if (!id) return NextResponse.json({ error: "ID required" }, { status: 400 });
 
     try {
-        let products = await getProducts(); // Now async
-        const initialLength = products.length;
-        products = products.filter((p: any) => p.id !== id);
-
-        if (products.length === initialLength) {
-            return NextResponse.json({ error: "Product not found" }, { status: 404 });
-        }
-
-        await saveProducts(products); // Now async
+        await sql`DELETE FROM products WHERE id = ${id}`;
         return NextResponse.json({ success: true });
     } catch (error: any) {
         console.error("Delete Error:", error);
