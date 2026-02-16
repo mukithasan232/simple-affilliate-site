@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import redis from "@/lib/redis"; // Import Redis utility
 
 const productsPath = path.join(process.cwd(), "src/data/products.json");
 
@@ -10,18 +11,47 @@ function isAdmin(req: Request) {
     return secret === ADMIN_SECRET;
 }
 
-function getProducts() {
+// Read products (Redis -> Local Fallback)
+async function getProducts() {
+    // 1. Try Redis first
+    if (redis) {
+        try {
+            const products = await redis.get<any[]>("products:all");
+            if (products) return products;
+        } catch (error) {
+            console.error("Redis Read Error:", error);
+        }
+    }
+
+    // 2. Fallback to local file
     const data = fs.readFileSync(productsPath, "utf8");
-    return JSON.parse(data);
+    const localProducts = JSON.parse(data);
+
+    // 3. Seed Redis if empty (Self-healing)
+    if (redis) {
+        try {
+            await redis.set("products:all", localProducts);
+        } catch (error) {
+            console.error("Redis Seed Error:", error);
+        }
+    }
+
+    return localProducts;
 }
 
-function saveProducts(products: any[]) {
-    fs.writeFileSync(productsPath, JSON.stringify(products, null, 4), "utf8");
+// Save products (Redis ONLY for production updates)
+async function saveProducts(products: any[]) {
+    if (redis) {
+        await redis.set("products:all", products);
+    } else {
+        // Fallback for local development without Redis env vars
+        fs.writeFileSync(productsPath, JSON.stringify(products, null, 4), "utf8");
+    }
 }
 
 export async function GET() {
     try {
-        const products = getProducts();
+        const products = await getProducts(); // Now async
         return NextResponse.json(products);
     } catch (error) {
         return NextResponse.json({ error: "Failed to load products" }, { status: 500 });
@@ -35,7 +65,7 @@ export async function POST(req: Request) {
 
     try {
         const newProduct = await req.json();
-        const products = getProducts();
+        const products = await getProducts(); // Now async
 
         // Check if updating existing product
         const existingIndex = products.findIndex((p: any) => p.id === newProduct.id);
@@ -54,19 +84,13 @@ export async function POST(req: Request) {
             products.push(newProduct);
         }
 
-        saveProducts(products);
+        await saveProducts(products); // Now async & uses Redis if available
 
         return NextResponse.json(newProduct);
 
     } catch (error: any) {
         console.error("Save Error:", error);
-        // Specific error for Vercel Read-Only Filesystem
-        if (error.code === 'EROFS' || error.message.includes('read-only')) {
-            return NextResponse.json({
-                error: "Deployment Limit: Cannot write to files on Vercel. You must connect a Storage Database (Blob/KV/Firebase)."
-            }, { status: 500 });
-        }
-        return NextResponse.json({ error: "Failed to save product" }, { status: 500 });
+        return NextResponse.json({ error: "Failed to save product. Ensure Redis is configured." }, { status: 500 });
     }
 }
 
@@ -81,7 +105,7 @@ export async function DELETE(req: Request) {
     if (!id) return NextResponse.json({ error: "ID required" }, { status: 400 });
 
     try {
-        let products = getProducts();
+        let products = await getProducts(); // Now async
         const initialLength = products.length;
         products = products.filter((p: any) => p.id !== id);
 
@@ -89,15 +113,10 @@ export async function DELETE(req: Request) {
             return NextResponse.json({ error: "Product not found" }, { status: 404 });
         }
 
-        saveProducts(products);
+        await saveProducts(products); // Now async
         return NextResponse.json({ success: true });
     } catch (error: any) {
         console.error("Delete Error:", error);
-        if (error.code === 'EROFS' || error.message.includes('read-only')) {
-            return NextResponse.json({
-                error: "Deployment Limit: Cannot delete files on Vercel (Read-Only FS). Please use a real database."
-            }, { status: 500 });
-        }
         return NextResponse.json({ error: "Failed to delete" }, { status: 500 });
     }
 }
