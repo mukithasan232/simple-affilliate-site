@@ -43,7 +43,7 @@ export async function GET() {
         // Auto-seed if empty
         if (rows.length === 0 && products.length > 0) {
             console.log("Seeding database with initial products...");
-            for (const p of products) {
+            for (const p of products as any[]) {
                 await sql`
                     INSERT INTO products (
                         id, title, slug, category, price, old_price, discount, rating, 
