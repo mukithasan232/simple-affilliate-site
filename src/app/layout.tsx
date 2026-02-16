@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ExitIntent from "@/components/ui/ExitIntent";
 import { ThemeProvider } from "@/components/layout/ThemeContext";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Affiliate Pro - Modern Amazon Niche Website",
@@ -39,6 +40,7 @@ export default function RootLayout({
           <Footer />
           <ExitIntent />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
