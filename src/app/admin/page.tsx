@@ -77,6 +77,34 @@ export default function AdminPage() {
         }
     };
 
+    const handleRefresh = async (product: any) => {
+        if (!confirm(`Refresh data for ${product.title}? This will re-scrape Amazon.`)) return;
+        setIsLoading(true);
+        try {
+            const res = await fetch("/api/admin/scrape", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-admin-secret": password
+                },
+                body: JSON.stringify({ url: product.affiliateLink }),
+            });
+            const data = await res.json();
+            if (data.error) throw new Error(data.error);
+
+            // Merge new data with old product ID
+            const updatedProduct = { ...data, id: product.id, affiliateLink: product.affiliateLink };
+            setEditingProduct(updatedProduct);
+
+            // Auto-save immediately or open modal? Let's open modal for review
+            setIsModalOpen(true);
+        } catch (error: any) {
+            alert(error.message);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     const handleDelete = async (id: string) => {
         if (!confirm("Are you sure you want to delete this product?")) return;
         try {
@@ -176,6 +204,13 @@ export default function AdminPage() {
                                     <td><span className={styles.badge}>{p.category}</span></td>
                                     <td><strong>${p.price}</strong></td>
                                     <td className={styles.actions}>
+                                        <button className={styles.editBtn} onClick={() => {
+                                            setEditingProduct(p);
+                                            setIsModalOpen(true);
+                                        }}>Edit</button>
+                                        <button className={styles.refreshBtn} onClick={() => handleRefresh(p)} title="Re-scrape Price">
+                                            ↻
+                                        </button>
                                         <button className={styles.deleteBtn} onClick={() => handleDelete(p.id)}>Delete</button>
                                     </td>
                                 </tr>

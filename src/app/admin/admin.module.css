@@ -1,3 +1,5 @@
+/* Existing styles... */
+
 .adminDashboard {
     padding: 8rem 0 4rem;
     min-height: 100vh;
@@ -130,6 +132,34 @@
     color: #ef4444;
     cursor: pointer;
     font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.editBtn {
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.refreshBtn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.refreshBtn:hover {
+    color: var(--text-main);
+}
+
+.deleteBtn:hover,
+.editBtn:hover {
+    opacity: 0.8;
 }
 
 /* Modal Styles */
