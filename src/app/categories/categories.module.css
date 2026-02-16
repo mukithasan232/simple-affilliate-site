@@ -1,0 +1,38 @@
+.page {
+    padding: 10rem 0 6rem;
+}
+
+.section {
+    margin-bottom: 5rem;
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+}
+
+.catTitle {
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+
+.count {
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+@media (max-width: 640px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,54 @@
+.postPage {
+    padding: 10rem 0 6rem;
+}
+
+.article {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.meta {
+    color: var(--primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.title {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    letter-spacing: -2px;
+}
+
+.excerpt {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: var(--text-main);
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+    font-weight: 500;
+}
+
+.content {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .excerpt {
+        font-size: 1.25rem;
+    }
+}

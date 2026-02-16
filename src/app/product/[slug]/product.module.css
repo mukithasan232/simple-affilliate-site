@@ -1,0 +1,249 @@
+.productPage {
+    padding: 8rem 0;
+}
+
+.breadcrumbs {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+}
+
+.breadcrumbs a {
+    transition: var(--transition);
+}
+
+.breadcrumbs a:hover {
+    color: var(--primary);
+}
+
+.mainGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    margin-bottom: 6rem;
+}
+
+.mainImage {
+    background: white;
+    padding: 3rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mainImage img {
+    max-width: 100%;
+    height: auto;
+}
+
+.category {
+    display: inline-block;
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary);
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.rating {
+    color: var(--accent);
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.rating span {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-left: 0.5rem;
+}
+
+.priceSection {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.oldPrice {
+    text-decoration: line-through;
+    color: var(--text-muted);
+    font-size: 1.25rem;
+}
+
+.summary {
+    background: var(--bg-body);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+}
+
+.summary h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.details h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.details h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 2px;
+}
+
+.prosCons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 5rem;
+}
+
+.pros,
+.cons {
+    background: var(--bg-card);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+}
+
+.prosCons ul {
+    list-style: none;
+    margin-top: 1.5rem;
+}
+
+.prosCons li {
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.features {
+    margin-bottom: 5rem;
+}
+
+.featureGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.featureItem {
+    background: var(--bg-body);
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-weight: 600;
+}
+
+.faqList {
+    margin-top: 1.5rem;
+}
+
+.faqItem {
+    margin-bottom: 2rem;
+}
+
+.faqItem h4 {
+    margin-bottom: 0.5rem;
+}
+
+/* Affiliate Optimization */
+.stickyBar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 0;
+    box-shadow: var(--shadow-md);
+}
+
+.stickyInner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stickyInfo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.stickyImg {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    background: white;
+    padding: 2px;
+    border-radius: var(--radius-sm);
+}
+
+.stickyInfo strong {
+    display: block;
+    font-size: 0.95rem;
+    max-width: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stickyInfo p {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.priceWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 1024px) {
+    .mainGrid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .stickyBar {
+        display: none;
+    }
+
+    .prosCons {
+        grid-template-columns: 1fr;
+    }
+
+    .title {
+        font-size: 2.25rem;
+    }
+}

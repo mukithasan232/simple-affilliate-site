@@ -1,0 +1,107 @@
+/* [project]/src/components/layout/Footer.module.css [app-client] (css) */
+.Footer-module__3hUVsW__footer {
+  background-color: var(--secondary);
+  color: #94a3b8;
+  margin-top: 6rem;
+  padding: 6rem 0 2rem;
+}
+
+.Footer-module__3hUVsW__grid {
+  grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+  display: grid;
+}
+
+.Footer-module__3hUVsW__logo {
+  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  font-weight: 800;
+  display: inline-block;
+}
+
+.Footer-module__3hUVsW__desc {
+  line-height: 1.7;
+}
+
+.Footer-module__3hUVsW__linksCategory h3, .Footer-module__3hUVsW__newsletter h3 {
+  color: #fff;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.Footer-module__3hUVsW__linksCategory ul {
+  list-style: none;
+}
+
+.Footer-module__3hUVsW__linksCategory li {
+  margin-bottom: .75rem;
+}
+
+.Footer-module__3hUVsW__linksCategory a {
+  transition: var(--transition);
+}
+
+.Footer-module__3hUVsW__linksCategory a:hover {
+  color: var(--primary);
+}
+
+.Footer-module__3hUVsW__newsletter p {
+  margin-bottom: 1.5rem;
+}
+
+.Footer-module__3hUVsW__form {
+  flex-direction: column;
+  gap: 1rem;
+  display: flex;
+}
+
+.Footer-module__3hUVsW__form input {
+  border-radius: var(--radius-md);
+  color: #fff;
+  transition: var(--transition);
+  background: #ffffff0d;
+  border: 1px solid #ffffff1a;
+  outline: none;
+  padding: .75rem 1rem;
+}
+
+.Footer-module__3hUVsW__form input:focus {
+  border-color: var(--primary);
+  background: #ffffff14;
+}
+
+.Footer-module__3hUVsW__bottom {
+  text-align: center;
+  border-top: 1px solid #ffffff0d;
+  padding-top: 2rem;
+}
+
+.Footer-module__3hUVsW__disclaimer {
+  opacity: .7;
+  max-width: 800px;
+  margin-top: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: .85rem;
+}
+
+@media (max-width: 1024px) {
+  .Footer-module__3hUVsW__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .Footer-module__3hUVsW__grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .Footer-module__3hUVsW__footer {
+    padding: 4rem 0 2rem;
+  }
+}
+
+/*# sourceMappingURL=src_components_layout_Footer_module_css_bad6b30c._.single.css.map*/

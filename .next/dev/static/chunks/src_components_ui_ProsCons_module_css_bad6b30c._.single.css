@@ -1,0 +1,51 @@
+/* [project]/src/components/ui/ProsCons.module.css [app-client] (css) */
+.ProsCons-module__qZFIaq__container {
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 3rem 0;
+  display: grid;
+}
+
+.ProsCons-module__qZFIaq__prosCard, .ProsCons-module__qZFIaq__consCard {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+}
+
+.ProsCons-module__qZFIaq__prosCard h3, .ProsCons-module__qZFIaq__consCard h3 {
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
+}
+
+.ProsCons-module__qZFIaq__container ul {
+  padding: 0;
+  list-style: none;
+}
+
+.ProsCons-module__qZFIaq__container li {
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  font-size: .95rem;
+  line-height: 1.5;
+  display: flex;
+}
+
+.ProsCons-module__qZFIaq__check {
+  color: #10b981;
+  font-weight: 900;
+}
+
+.ProsCons-module__qZFIaq__cross {
+  color: #ef4444;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+@media (max-width: 768px) {
+  .ProsCons-module__qZFIaq__container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*# sourceMappingURL=src_components_ui_ProsCons_module_css_bad6b30c._.single.css.map*/

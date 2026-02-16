@@ -1,0 +1,17 @@
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.stars {
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    font-size: 1.1rem;
+}
+
+.label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
