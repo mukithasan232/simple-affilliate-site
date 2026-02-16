@@ -23,22 +23,22 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         "@context": "https://schema.org/",
         "@type": "Product",
         "name": product.title,
-        "image": [product.image],
-        "description": product.reviewSummary,
+        "image": product.images,
+        "description": product.description,
         "brand": {
             "@type": "Brand",
             "name": product.category
         },
         "offers": {
             "@type": "Offer",
-            "url": product.link,
+            "url": product.affiliateLink,
             "priceCurrency": "USD",
             "price": product.price,
             "availability": "https://schema.org/InStock"
         },
         "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": product.rating, // Correct placement for ratingValue
+            "ratingValue": product.rating,
             "reviewCount": "128"
         }
     };
@@ -55,13 +55,13 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 <div className="container">
                     <div className={styles.stickyInner}>
                         <div className={styles.stickyInfo}>
-                            <img src={product.image} alt="" className={styles.stickyImg} />
+                            <img src={product.images[0]} alt="" className={styles.stickyImg} />
                             <div>
                                 <strong>{product.title}</strong>
                                 <p>${product.price}</p>
                             </div>
                         </div>
-                        <a href={product.link} target="_blank" className="btn btn-primary">
+                        <a href={product.affiliateLink} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                             Check Price on Amazon
                         </a>
                     </div>
@@ -77,7 +77,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 <div className={styles.mainGrid}>
                     <div className={styles.gallery}>
                         <div className={styles.mainImage}>
-                            <Image src={product.image} alt={product.title} width={600} height={600} priority />
+                            <Image src={product.images[0]} alt={product.title} width={600} height={600} priority />
                         </div>
                     </div>
 
@@ -92,14 +92,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                                 <span className={styles.price}>${product.price}</span>
                                 {product.oldPrice && <span className={styles.oldPrice}>${product.oldPrice}</span>}
                             </div>
-                            <a href={product.link} target="_blank" className="btn btn-primary">
+                            <a href={product.affiliateLink} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                                 View Price on Amazon
                             </a>
                         </div>
 
                         <div className={styles.summary}>
                             <h3>Our Expert Review</h3>
-                            <p>{product.reviewSummary}</p>
+                            <p>{product.description}</p>
                         </div>
                     </div>
                 </div>
@@ -110,9 +110,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                     <section className={styles.features}>
                         <h3>Technical <span className="text-gradient">Specifications</span></h3>
                         <div className={styles.featureGrid}>
-                            {product.features.map((feature, i) => (
-                                <div key={i} className={styles.featureItem}>
-                                    <span>{feature}</span>
+                            {Object.entries(product.specifications).map(([key, val]: [string, any]) => (
+                                <div key={key} className={styles.featureItem}>
+                                    <strong>{key}:</strong> <span>{val}</span>
                                 </div>
                             ))}
                         </div>
@@ -130,7 +130,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                     <AffiliateCTA
                         title={`Ready to upgrade? Get the ${product.title} today.`}
                         price={product.price}
-                        link={product.link}
+                        link={product.affiliateLink}
                         badge={product.badge}
                     />
 

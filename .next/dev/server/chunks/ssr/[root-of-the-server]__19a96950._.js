@@ -176,7 +176,7 @@ function ProductCard({ product }) {
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$product$2f$ProductCard$2e$module$2e$css__$5b$app$2d$rsc$5d$__$28$css__module$29$__["default"].imageWrapper,
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
-                    src: product.image,
+                    src: product.images[0],
                     alt: product.title,
                     width: 300,
                     height: 300,
@@ -280,7 +280,7 @@ function ProductCard({ product }) {
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                href: product.link,
+                                href: product.affiliateLink,
                                 target: "_blank",
                                 rel: "noopener noreferrer",
                                 className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$product$2f$ProductCard$2e$module$2e$css__$5b$app$2d$rsc$5d$__$28$css__module$29$__["default"].btn} ${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$product$2f$ProductCard$2e$module$2e$css__$5b$app$2d$rsc$5d$__$28$css__module$29$__["default"].btnAmazon}`,
@@ -312,7 +312,7 @@ function ProductCard({ product }) {
 }),
 "[project]/src/data/products.json (json)", ((__turbopack_context__) => {
 
-__turbopack_context__.v([{"id":"p1","title":"KAIGERR Laptop 15.6\" Intel N150 (16GB RAM)","slug":"kaigerr-laptop-review","category":"Laptops","price":379,"oldPrice":700,"discount":46,"rating":4.5,"image":"/images/laptop.jpg","link":"https://amzn.to/4pOSlDC","featured":true,"badge":"Best Overall Choice","pros":["Excellent Value for Money","16GB RAM is generous","Portable & Sleek Design"],"cons":["Limited Storage","Basic Build Quality"],"features":["15.6 inch Display","Intel N150 Processor","16GB RAM","Windows 11 Home"],"reviewSummary":"A budget-friendly laptop that doesn't compromise on speed. Perfect for students and light business work.","faqs":[{"q":"Does it have a backlit keyboard?","a":"Yes, it comes with a basic backlit keyboard."},{"q":"Can I upgrade the RAM?","a":"No, the RAM is soldered."}]},{"id":"p2","title":"HP Chromebook 15.6\" HD Flagship Laptop","slug":"hp-chromebook-15-6-hd-flagship","category":"Laptops","price":349,"oldPrice":440,"discount":20,"rating":4.2,"image":"/images/02_lap.jpg","link":"https://amzn.to/3M5blzQ","featured":true,"badge":"Deal of the Day","pros":["Long Battery Life","Fast ChromeOS","Lightweight"],"cons":["Limited Offline Apps","Basic Screen Resolution"],"features":["15.6 inch HD Display","Intel Processor","ChromeOS","Quick Charging"],"reviewSummary":"The ultimate student companion. Simple, fast, and lasts all day.","faqs":[{"q":"Is this good for gaming?","a":"Basic web-based games and Android games only."}]},{"id":"p3","title":"Logitech MX Keys S Combo - Performance Wireless","slug":"logitech-mx-keys-s-combo","category":"Peripherals","price":198.74,"oldPrice":null,"discount":null,"rating":4.8,"image":"/images/logitech.jpg","link":"https://amzn.to/4rcm8Y3","featured":true,"badge":"Hot Pick","pros":["Extremely Quiet Typing","Multi-device connectivity","Smart Hand Proximity Backlighting"],"cons":["Pricey for a combo","Proprietary charging cable"],"features":["MX Keys S Keyboard","MX Master 3S Mouse","Palm Rest Included","Logi Bolt Receiver"],"reviewSummary":"The gold standard for productivity. If you work from home, this is the best investment you can make.","faqs":[{"q":"Can I use it with Mac and Windows simultaneously?","a":"Yes, it supports Flow which allows you to switch between devices easily."}]},{"title":"acer Aspire 14 AI Copilot+ PC | 14\" WUXGA Display | Intel Core Ultra 5 Processor 226V | NPU: Up to 40 Tops - GPU: Up to 53 Tops | Intel ARC 130V | 16GB LPDDR5X | 512GB SSD | Wi-Fi 6E | A14-52M-51S1","price":459.99,"oldPrice":829.99,"rating":4.2,"image":"https://m.media-amazon.com/images/I/712S6q+GQjL._AC_SX300_SY300_QL70_ML2_.jpg","features":["It's possible on your Intel AI PC - Equipped with an Intel Core Ultra 5 processor (Series 2), the Aspire 14 Al brings new AI experiences in productivity, creativity and security through a combination of CPU, GPU and NPU. This combo delivers the speed and responsiveness to handle any task with ease -along with all-day battery life of up to 22 hours and smooth multitasking performance. (Battery life was measured under specific test settings pursuant to video playback scenarios)","New AI Superpowers - Discover the power of Recall (preview), improved Windows search, and Click to Do (preview) on Copilot plus PCs. Effortlessly locate past content, perform natural searches, and interact with text and images – all while ensuring your data remains private and you stay productive. (Copilot plus PC experiences vary by device and market and may require updates continuing to roll out through 2025; Recall and Click to Do will be coming to European Economic Area later in 2025; timing varies. See aka.ms/copilotpluspcs)","Indulge Your Eyes - Immerse yourself in a world of vibrant detail with a breathtaking 14\" WUXGA 1920 x 1200 ultra high-resolution display. This expansive, panoramic screen is your canvas for entertainment, artistic creativity, and captivating AI experiences that will leave you in awe.","Smart and Effortless AI - Intelligent AI solutions are at your fingertips with AcerSense. Streamline settings, optimize your video presence, and elevate communication - all with intuitive AI that’s easy to use and enhances productivity seamlessly. Just press the AcerSense key on the backlit keyboard for instant access and experience the magic of AI","Style and Substance - The Aspire 14 Al boasts a sleek, durable, and lightweight aluminum chassis, with an ultra-modern design and a 180° lie-flat hinge for versatile and convenient use on the go. Ideal for work, study, or creative pursuits wherever you are."],"link":"https://www.amazon.com/Aspire-Copilot-WUXGA-Display-Processor/dp/B0DWNLN3KP?&linkCode=ll2&tag=codernestdigi-20&linkId=7dfa9c3cc83dced55c92a00e10f0d91c&language=en_US&ref_=as_li_ss_tl","category":"General","featured":false,"badge":"","pros":["High quality","Reliable performance"],"cons":["May be expensive for some","Limited stock"],"reviewSummary":"A comprehensive look at the acer Aspire 14 AI Copilot+ PC | 14\" WUXGA Display | Intel Core Ultra 5 Processor 226V | NPU: Up to 40 Tops - GPU: Up to 53 Tops | Intel ARC 130V | 16GB LPDDR5X | 512GB SSD | Wi-Fi 6E | A14-52M-51S1. It offers great value and performance for its category.","faqs":[{"q":"Is it worth the price?","a":"Based on our analysis, yes it offers solid value."}],"id":"p4","slug":"acer-aspire-14-ai-copilot-pc-14-wuxga-display-intel-core-ultra-5-processor-226v-npu-up-to-40-tops-gpu-up-to-53-tops-intel-arc-130v-16gb-lpddr5x-512gb-ssd-wi-fi-6e-a14-52m-51s1"},{"title":"medicube Toner Pads Zero Pore Pad 2.0 | Dual-Textured Facial Pad for Exfoliation and Pore Care with 4.5% AHA Lactic Acid, 0.45% BHA Salicylic Acid | Ideal for All, Korean Skin Care, 70 Pads (1 Pack)","price":15.12,"oldPrice":0.22,"rating":4.6,"image":"https://m.media-amazon.com/images/I/71Mcspt-6AL._AC_SY300_SX300_QL70_ML2_.jpg","features":["Exfoliates and Refines Pores - Perfect for those concerned about enlarged pores, seeking smoother skin, battling greasy skin from excess sebum","Power of Nature - Dive deep with White Willow Bark (Natural BHA), Citric Acid (AHA), and soothing botanical extracts. Nature's finest ingredients come together for optimal skin clarity.","Lavender Calmness - Experience therapeutic relaxation with our pads, merging lavender's soothing essence with deep cleansing benefits.","Transformative Results - Achieve clearer skin with our potent formula: witness a significant reduction in Sebum/Oil by 47.1% and a dramatic decrease in Pore Waste by 87.3%.","HOW TO USE - After cleansing, swipe with the embossed side, follow with the silky side, and finish by lightly patting for absorption."],"link":"https://www.amazon.com/Medicube-Zero-Pore-Pads-Dual-Textured/dp/B09V7Z4TJG?pf_rd_r=PBT3Y3NE6QZJDKK4E6Z2&pf_rd_p=3ad18919-c59e-4977-8ce1-315d93403f16&th=1&linkCode=ll2&tag=codernestdigi-20&linkId=39e6d534ca1fa914a755c35756920783&language=en_US&ref_=as_li_ss_tl","category":"General","featured":false,"badge":"","pros":["High quality","Reliable performance"],"cons":["May be expensive for some","Limited stock"],"reviewSummary":"A comprehensive look at the medicube Toner Pads Zero Pore Pad 2.0 | Dual-Textured Facial Pad for Exfoliation and Pore Care with 4.5% AHA Lactic Acid, 0.45% BHA Salicylic Acid | Ideal for All, Korean Skin Care, 70 Pads (1 Pack). It offers great value and performance for its category.","faqs":[{"q":"Is it worth the price?","a":"Based on our analysis, yes it offers solid value."}],"id":"p5","slug":"medicube-toner-pads-zero-pore-pad-2-0-dual-textured-facial-pad-for-exfoliation-and-pore-care-with-4-5-aha-lactic-acid-0-45-bha-salicylic-acid-ideal-for-all-korean-skin-care-70-pads-1-pack-"}]);}),
+__turbopack_context__.v([{"id":"p1","title":"KAIGERR Laptop 15.6\" Intel N150 (16GB RAM)","slug":"kaigerr-laptop-review","category":"Laptops","price":379,"oldPrice":700,"discount":46,"rating":4.5,"images":["/images/laptop.jpg"],"affiliateLink":"https://amzn.to/4pOSlDC","featured":true,"badge":"Best Overall Choice","pros":["Excellent Value for Money","16GB RAM is generous","Portable & Sleek Design"],"cons":["Limited Storage","Basic Build Quality"],"specifications":{"Display":"15.6 inch","Processor":"Intel N150","RAM":"16GB","OS":"Windows 11 Home"},"description":"A budget-friendly laptop that doesn't compromise on speed. Perfect for students and light business work.","faqs":[{"q":"Does it have a backlit keyboard?","a":"Yes, it comes with a basic backlit keyboard."},{"q":"Can I upgrade the RAM?","a":"No, the RAM is soldered."}]},{"id":"p2","title":"HP Chromebook 15.6\" HD Flagship Laptop","slug":"hp-chromebook-15-6-hd-flagship","category":"Laptops","price":349,"oldPrice":440,"discount":20,"rating":4.2,"images":["/images/02_lap.jpg"],"affiliateLink":"https://amzn.to/3M5blzQ","featured":true,"badge":"Deal of the Day","pros":["Long Battery Life","Fast ChromeOS","Lightweight"],"cons":["Limited Offline Apps","Basic Screen Resolution"],"specifications":{"Display":"15.6 inch HD","Processor":"Intel","OS":"ChromeOS"},"description":"The ultimate student companion. Simple, fast, and lasts all day.","faqs":[{"q":"Is this good for gaming?","a":"Basic web-based games and Android games only."}]},{"id":"p3","title":"Logitech MX Keys S Combo - Performance Wireless","slug":"logitech-mx-keys-s-combo","category":"Peripherals","price":198.74,"oldPrice":null,"discount":null,"rating":4.8,"images":["/images/logitech.jpg"],"affiliateLink":"https://amzn.to/4rcm8Y3","featured":true,"badge":"Hot Pick","pros":["Extremely Quiet Typing","Multi-device connectivity","Smart Hand Proximity Backlighting"],"cons":["Pricey for a combo","Proprietary charging cable"],"specifications":{"Keyboard":"MX Keys S","Mouse":"MX Master 3S","Connectivity":"Logi Bolt / Bluetooth"},"description":"The gold standard for productivity. If you work from home, this is the best investment you can make.","faqs":[{"q":"Can I use it with Mac and Windows simultaneously?","a":"Yes, it supports Flow which allows you to switch between devices easily."}]},{"id":"p4","title":"Acer Aspire 14 AI Copilot+ PC","slug":"acer-aspire-14-ai-copilot","category":"Laptops","price":459.99,"oldPrice":829.99,"discount":45,"rating":4.2,"images":["https://m.media-amazon.com/images/I/712S6q+GQjL._AC_SX300_SY300_QL70_ML2_.jpg"],"affiliateLink":"https://www.amazon.com/Aspire-Copilot-WUXGA-Display-Processor/dp/B0DWNLN3KP","featured":false,"badge":"AI Powered","pros":["Powerful AI Features","Long Battery Life (22hrs)","Premium Aluminum Chassis"],"cons":["Copilot features still in preview","Integrated graphics"],"specifications":{"Display":"14 inch WUXGA","Processor":"Intel Core Ultra 5","RAM":"16GB LPDDR5X","Storage":"512GB SSD"},"description":"An AI-ready laptop with a beautiful WUXGA display and incredible 22-hour battery life.","faqs":[{"q":"Is the RAM upgradeable?","a":"No, LPDDR5X memory is soldered."}]}]);}),
 "[project]/src/app/page.module.css [app-rsc] (css module)", ((__turbopack_context__) => {
 
 __turbopack_context__.v({
@@ -710,7 +710,7 @@ function Home() {
                                     children: "🛡️ Verified"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/page.tsx",
-                                    lineNumber: 91,
+                                    lineNumber: 90,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
@@ -732,6 +732,143 @@ function Home() {
             }, void 0, false, {
                 fileName: "[project]/src/app/page.tsx",
                 lineNumber: 65,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$module$2e$css__$5b$app$2d$rsc$5d$__$28$css__module$29$__["default"].blogSection,
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "container",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                            className: "section-title",
+                            children: [
+                                "Latest ",
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: "text-gradient",
+                                    children: "Insights"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/app/page.tsx",
+                                    lineNumber: 101,
+                                    columnNumber: 48
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/app/page.tsx",
+                            lineNumber: 101,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$module$2e$css__$5b$app$2d$rsc$5d$__$28$css__module$29$__["default"].blogGrid,
+                            children: blogPosts.slice(0, 3).map((post)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
+                                    href: `/blog/${post.slug}`,
+                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$module$2e$css__$5b$app$2d$rsc$5d$__$28$css__module$29$__["default"].blogCard,
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$module$2e$css__$5b$app$2d$rsc$5d$__$28$css__module$29$__["default"].blogImgWrapper,
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                    src: post.image,
+                                                    alt: post.title
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/app/page.tsx",
+                                                    lineNumber: 106,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$module$2e$css__$5b$app$2d$rsc$5d$__$28$css__module$29$__["default"].blogCat,
+                                                    children: post.category
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/app/page.tsx",
+                                                    lineNumber: 107,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/app/page.tsx",
+                                            lineNumber: 105,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$module$2e$css__$5b$app$2d$rsc$5d$__$28$css__module$29$__["default"].blogContent,
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                    children: post.title
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/app/page.tsx",
+                                                    lineNumber: 110,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$page$2e$module$2e$css__$5b$app$2d$rsc$5d$__$28$css__module$29$__["default"].blogMeta,
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            children: [
+                                                                "By ",
+                                                                post.author.name
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/app/page.tsx",
+                                                            lineNumber: 112,
+                                                            columnNumber: 21
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            children: post.readTime
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/app/page.tsx",
+                                                            lineNumber: 113,
+                                                            columnNumber: 21
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/app/page.tsx",
+                                                    lineNumber: 111,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/src/app/page.tsx",
+                                            lineNumber: 109,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, post.id, true, {
+                                    fileName: "[project]/src/app/page.tsx",
+                                    lineNumber: 104,
+                                    columnNumber: 15
+                                }, this))
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/page.tsx",
+                            lineNumber: 102,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                textAlign: 'center',
+                                marginTop: '3rem'
+                            },
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
+                                href: "/blog",
+                                className: "btn",
+                                children: "View All Insights →"
+                            }, void 0, false, {
+                                fileName: "[project]/src/app/page.tsx",
+                                lineNumber: 120,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/page.tsx",
+                            lineNumber: 119,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/app/page.tsx",
+                    lineNumber: 100,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/src/app/page.tsx",
+                lineNumber: 99,
                 columnNumber: 7
             }, this)
         ]

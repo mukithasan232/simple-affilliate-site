@@ -8,9 +8,9 @@ interface Product {
     title: string;
     price: number;
     rating: number;
-    image: string;
-    features: string[];
-    link: string;
+    images: string[];
+    specifications: Record<string, any>;
+    affiliateLink: string;
     badge?: string;
 }
 
@@ -35,7 +35,7 @@ export default function ComparisonTable({ products, title = "Quick Comparison" }
                                     <div className={styles.productHeader}>
                                         {index === 0 && <span className={styles.winnerBadge}>★ Top Choice</span>}
                                         <div className={styles.imageWrapper}>
-                                            <img src={p.image} alt={p.title} />
+                                            <img src={p.images[0]} alt={p.title} />
                                         </div>
                                         <span className={styles.title}>{p.title}</span>
                                     </div>
@@ -67,13 +67,13 @@ export default function ComparisonTable({ products, title = "Quick Comparison" }
                             ))}
                         </tr>
                         <tr>
-                            <td>Key Features</td>
+                            <td>Key Specs</td>
                             {products.map((p) => (
                                 <td key={p.id}>
                                     <ul className={styles.featureList}>
-                                        {p.features.slice(0, 4).map((f, i) => (
+                                        {Object.entries(p.specifications).slice(0, 4).map(([key, val], i) => (
                                             <li key={i}>
-                                                <span className={styles.checkIcon}>✓</span> {f}
+                                                <span className={styles.checkIcon}>✓</span> <strong>{key}:</strong> {val}
                                             </li>
                                         ))}
                                     </ul>
@@ -86,7 +86,7 @@ export default function ComparisonTable({ products, title = "Quick Comparison" }
                                 <td key={p.id}>
                                     <div className={styles.actionCell}>
                                         <a
-                                            href={p.link}
+                                            href={p.affiliateLink}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className={styles.amazonBtn}

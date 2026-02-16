@@ -76,7 +76,7 @@ function ComparisonTable({ products, title = "Quick Comparison" }) {
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$ComparisonTable$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].imageWrapper,
                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                            src: p.image,
+                                                            src: p.images[0],
                                                             alt: p.title
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/ui/ComparisonTable.tsx",
@@ -216,7 +216,7 @@ function ComparisonTable({ products, title = "Quick Comparison" }) {
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                            children: "Key Features"
+                                            children: "Key Specs"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/ui/ComparisonTable.tsx",
                                             lineNumber: 70,
@@ -225,7 +225,7 @@ function ComparisonTable({ products, title = "Quick Comparison" }) {
                                         products.map((p)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
                                                     className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$ComparisonTable$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].featureList,
-                                                    children: p.features.slice(0, 4).map((f, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                                    children: Object.entries(p.specifications).slice(0, 4).map(([key, val], i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                     className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$ComparisonTable$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].checkIcon,
@@ -236,7 +236,18 @@ function ComparisonTable({ products, title = "Quick Comparison" }) {
                                                                     columnNumber: 49
                                                                 }, this),
                                                                 " ",
-                                                                f
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                                                    children: [
+                                                                        key,
+                                                                        ":"
+                                                                    ]
+                                                                }, void 0, true, {
+                                                                    fileName: "[project]/src/components/ui/ComparisonTable.tsx",
+                                                                    lineNumber: 76,
+                                                                    columnNumber: 93
+                                                                }, this),
+                                                                " ",
+                                                                val
                                                             ]
                                                         }, i, true, {
                                                             fileName: "[project]/src/components/ui/ComparisonTable.tsx",
@@ -272,7 +283,7 @@ function ComparisonTable({ products, title = "Quick Comparison" }) {
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$ComparisonTable$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].actionCell,
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                                        href: p.link,
+                                                        href: p.affiliateLink,
                                                         target: "_blank",
                                                         rel: "noopener noreferrer",
                                                         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$ComparisonTable$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].amazonBtn,

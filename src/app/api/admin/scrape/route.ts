@@ -41,26 +41,35 @@ export async function POST(req: Request) {
         const imgTag = document.querySelector("#landingImage") as HTMLImageElement;
         const image = imgTag?.src || "";
 
-        // Features (Bullet points)
+        // Specifications (Object from bullets)
+        const specifications: Record<string, string> = {};
         const features = Array.from(document.querySelectorAll("#feature-bullets li span"))
             .map(span => span.textContent?.trim())
             .filter(text => text && !text.toLowerCase().includes("see more"))
             .slice(0, 5);
+
+        features.forEach((f, i) => {
+            if (f) {
+                const parts = f.split(":");
+                if (parts.length > 1) specifications[parts[0].trim()] = parts[1].trim();
+                else specifications[`Detail ${i + 1}`] = f;
+            }
+        });
 
         const scrapedData = {
             title,
             price,
             oldPrice,
             rating,
-            image,
-            features,
-            link: url,
+            images: [image],
+            specifications,
+            affiliateLink: url,
             category: "General", // Default category
             featured: false,
             badge: "",
             pros: ["High quality", "Reliable performance"], // AI placeholders
             cons: ["May be expensive for some", "Limited stock"],
-            reviewSummary: `A comprehensive look at the ${title}. It offers great value and performance for its category.`,
+            description: `A comprehensive look at the ${title}. It offers great value and performance for its category.`,
             faqs: [
                 { q: "Is it worth the price?", a: "Based on our analysis, yes it offers solid value." }
             ]

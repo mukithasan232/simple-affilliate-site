@@ -3,18 +3,40 @@
         "id": "b1",
         "title": "Best Budget Laptops in 2026: Value Meets Performance",
         "slug": "best-budget-laptops-2026",
-        "excerpt": "Looking for a laptop that won't break the bank? We've rounded up the top 5 budget-friendly laptops that perform like high-end machines.",
+        "category": "Buying Guides",
+        "excerpt": "Looking for a laptop that won't break the bank? We've rounded up the top budget-friendly laptops that perform like high-end machines.",
         "date": "2026-02-15",
-        "author": "Tech Expert",
-        "content": "Full article content would go here..."
+        "author": {
+            "name": "Alex Tech",
+            "role": "Hardware Analyst",
+            "avatar": "/images/author-1.jpg"
+        },
+        "content": "Finding the perfect balance between price and performance is the ultimate goal for any budget-conscious buyer. In 2026, the market has shifted, and even 'budget' CPUs like the Intel N150 are capable of handling smooth 4K browsing and heavy multitasking.\n\n### Why Choose a Budget Laptop Now?\n\nUnlike three years ago, budget laptops now come standard with 16GB of RAM and NVMe SSDs, making them snappier than ever. The **KAIGERR 15.6** is a prime example of this trend, offering specs that used to cost twice as much.",
+        "image": "/images/blog-1.jpg",
+        "recommendedProducts": [
+            "p1",
+            "p2",
+            "p4"
+        ],
+        "readTime": "6 min"
     },
     {
         "id": "b2",
-        "title": "Top 10 Productivity Peripherals for Remote Work",
+        "title": "Maximizing Productivity: The Best Home Office Peripherals",
         "slug": "productivity-peripherals-remote-work",
-        "excerpt": "Boost your home office setup with these essential keyboards, mice, and accessories.",
+        "category": "Productivity",
+        "excerpt": "Boost your home office setup with these essential keyboards, mice, and accessories that will change the way you work.",
         "date": "2026-02-10",
-        "author": "Workflow Guru",
-        "content": "Full article content would go here..."
+        "author": {
+            "name": "Sarah Miller",
+            "role": "Reviewer",
+            "avatar": "/images/author-2.jpg"
+        },
+        "content": "Your peripheral choice defines your daily comfort. If you spend 8+ hours a day at your desk, investing in high-quality inputs isn't just a luxury—it's a necessity for ergonomics and efficiency.\n\n### The Royal Combo\n\nLogitech has long dominated the professional space, and their MX series continues to lead. The MX Keys S Combo combines silent typing with precision tracking that works on any surface, including glass.",
+        "image": "/images/blog-2.jpg",
+        "recommendedProducts": [
+            "p3"
+        ],
+        "readTime": "4 min"
     }
 ]

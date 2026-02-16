@@ -9,11 +9,11 @@ interface ProductCardProps {
         slug: string;
         price: number;
         oldPrice?: number | null;
-        image: string;
+        images: string[];
         badge?: string;
         discount?: number | null;
         rating: number;
-        link: string;
+        affiliateLink: string;
     };
 }
 
@@ -24,7 +24,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
             <div className={styles.imageWrapper}>
                 <Image
-                    src={product.image}
+                    src={product.images[0]}
                     alt={product.title}
                     width={300}
                     height={300}
@@ -51,7 +51,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                     <Link href={`/product/${product.slug}`} className={`${styles.btn} ${styles.btnOutline}`}>
                         Read Review
                     </Link>
-                    <a href={product.link} target="_blank" rel="noopener noreferrer" className={`${styles.btn} ${styles.btnAmazon}`}>
+                    <a href={product.affiliateLink} target="_blank" rel="noopener noreferrer" className={`${styles.btn} ${styles.btnAmazon}`}>
                         View Deal
                     </a>
                 </div>

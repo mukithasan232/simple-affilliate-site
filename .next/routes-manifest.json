@@ -70,6 +70,18 @@
       "namedRegex": "^/admin(?:/)?$"
     },
     {
+      "page": "/api/admin/scrape",
+      "regex": "^/api/admin/scrape(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/admin/scrape(?:/)?$"
+    },
+    {
+      "page": "/api/products",
+      "regex": "^/api/products(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/products(?:/)?$"
+    },
+    {
       "page": "/blog",
       "regex": "^/blog(?:/)?$",
       "routeKeys": {},
