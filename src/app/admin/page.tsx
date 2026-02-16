@@ -265,6 +265,14 @@ export default function AdminPage() {
                                         placeholder="e.g., Best Overall"
                                     />
                                 </div>
+                                <div className={styles.formGroup} style={{ gridColumn: 'span 2' }}>
+                                    <label>Affiliate Link</label>
+                                    <input
+                                        type="text"
+                                        value={editingProduct?.affiliateLink}
+                                        onChange={(e) => setEditingProduct({ ...editingProduct, affiliateLink: e.target.value })}
+                                    />
+                                </div>
                             </div>
                             <div className={styles.modalActions}>
                                 <button type="button" className="btn" onClick={() => setIsModalOpen(false)}>Cancel</button>
