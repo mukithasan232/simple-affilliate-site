@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { getAllProducts } from '@/lib/products'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://affiliatepro.com' // Replace with actual domain
+    const baseUrl = 'https://simple-affilliate-site.vercel.app'
     const products = getAllProducts()
 
     const productEntries = products.map((p) => ({
