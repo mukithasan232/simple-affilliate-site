@@ -29,12 +29,14 @@ export default function CategoriesPage() {
                             </div>
 
                             {/* Category Comparison */}
-                            <div style={{ marginTop: '3rem' }}>
-                                <ComparisonTable
-                                    products={categoryProducts.slice(0, 3)}
-                                    title={`Best ${cat} Comparison`}
-                                />
-                            </div>
+                            {categoryProducts.length > 1 && (
+                                <div style={{ marginTop: '3rem' }}>
+                                    <ComparisonTable
+                                        products={categoryProducts.slice(0, 3)}
+                                        title={`Best ${cat} Comparison`}
+                                    />
+                                </div>
+                            )}
                         </section>
                     );
                 })}
