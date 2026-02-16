@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 import Link from "next/link";
 import ComparisonTable from "@/components/ui/ComparisonTable";
 import blogPosts from "@/data/blog.json";
+import Newsletter from "@/components/ui/Newsletter";
 
 export default function Home() {
   const featuredProducts = products.filter(p => p.featured);
@@ -122,6 +123,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Newsletter />
     </div>
   );
 }

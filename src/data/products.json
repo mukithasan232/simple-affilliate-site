@@ -1,194 +1,129 @@
 [
     {
-        "id": "p1",
-        "title": "KAIGERR Laptop 15.6\" Intel N150 (16GB RAM)",
-        "slug": "kaigerr-laptop-review",
-        "category": "Laptops",
-        "price": 379,
-        "oldPrice": 700,
-        "discount": 46,
-        "rating": 4.5,
-        "images": [
-            "/images/laptop.jpg"
-        ],
-        "affiliateLink": "https://amzn.to/4pOSlDC",
-        "featured": true,
-        "badge": "Best Overall Choice",
-        "pros": [
-            "Excellent Value for Money",
-            "16GB RAM is generous",
-            "Portable & Sleek Design"
-        ],
-        "cons": [
-            "Limited Storage",
-            "Basic Build Quality"
-        ],
-        "specifications": {
-            "Display": "15.6 inch",
-            "Processor": "Intel N150",
-            "RAM": "16GB",
-            "OS": "Windows 11 Home"
-        },
-        "description": "A budget-friendly laptop that doesn't compromise on speed. Perfect for students and light business work.",
-        "faqs": [
-            {
-                "q": "Does it have a backlit keyboard?",
-                "a": "Yes, it comes with a basic backlit keyboard."
-            },
-            {
-                "q": "Can I upgrade the RAM?",
-                "a": "No, the RAM is soldered."
-            }
-        ]
-    },
-    {
-        "id": "p2",
-        "title": "HP Chromebook 15.6\" HD Flagship Laptop",
-        "slug": "hp-chromebook-15-6-hd-flagship",
-        "category": "Laptops",
-        "price": 349,
-        "oldPrice": 440,
-        "discount": 20,
+        "title": "FoodSaver PowerVac Compact Vacuum Sealing Machine Stainless Steel & Black Vertical Storage VS0150 | Preserves freshness reduces bag waste for both dry and wet food",
+        "price": 69.99,
+        "oldPrice": 99.99,
         "rating": 4.2,
         "images": [
-            "/images/02_lap.jpg"
-        ],
-        "affiliateLink": "https://amzn.to/3M5blzQ",
-        "featured": true,
-        "badge": "Deal of the Day",
-        "pros": [
-            "Long Battery Life",
-            "Fast ChromeOS",
-            "Lightweight"
-        ],
-        "cons": [
-            "Limited Offline Apps",
-            "Basic Screen Resolution"
+            "https://m.media-amazon.com/images/I/819xzwt4N0L._AC_SY300_SX300_QL70_ML2_.jpg"
         ],
         "specifications": {
-            "Display": "15.6 inch HD",
-            "Processor": "Intel",
-            "OS": "ChromeOS"
+            "Long-lasting Freshness": "Keeps food fresh in the freezer up to 5x longer, preventing freezer burn",
+            "Space-efficient": "Stores vertically to save valuable countertop space",
+            "Less Bag Waste": "Seals with 35% less bag waste compared to previous FoodSaver models",
+            "Customizable Settings": "Dry and Moist settings ensure an airtight seal for different types of food",
+            "Additional Features": "Built-in alignment tray for correct bag placement; can be connected to a handheld sealer"
         },
-        "description": "The ultimate student companion. Simple, fast, and lasts all day.",
-        "faqs": [
-            {
-                "q": "Is this good for gaming?",
-                "a": "Basic web-based games and Android games only."
-            }
-        ]
-    },
-    {
-        "id": "p3",
-        "title": "Logitech MX Keys S Combo - Performance Wireless",
-        "slug": "logitech-mx-keys-s-combo",
-        "category": "Peripherals",
-        "price": 198.74,
-        "oldPrice": null,
-        "discount": null,
-        "rating": 4.8,
-        "images": [
-            "/images/logitech.jpg"
-        ],
-        "affiliateLink": "https://amzn.to/4rcm8Y3",
-        "featured": true,
-        "badge": "Hot Pick",
-        "pros": [
-            "Extremely Quiet Typing",
-            "Multi-device connectivity",
-            "Smart Hand Proximity Backlighting"
-        ],
-        "cons": [
-            "Pricey for a combo",
-            "Proprietary charging cable"
-        ],
-        "specifications": {
-            "Keyboard": "MX Keys S",
-            "Mouse": "MX Master 3S",
-            "Connectivity": "Logi Bolt / Bluetooth"
-        },
-        "description": "The gold standard for productivity. If you work from home, this is the best investment you can make.",
-        "faqs": [
-            {
-                "q": "Can I use it with Mac and Windows simultaneously?",
-                "a": "Yes, it supports Flow which allows you to switch between devices easily."
-            }
-        ]
-    },
-    {
-        "id": "p4",
-        "title": "Acer Aspire 14 AI Copilot+ PC",
-        "slug": "acer-aspire-14-ai-copilot",
-        "category": "Laptops",
-        "price": 459.99,
-        "oldPrice": 829.99,
-        "discount": 45,
-        "rating": 4.2,
-        "images": [
-            "https://m.media-amazon.com/images/I/712S6q+GQjL._AC_SX300_SY300_QL70_ML2_.jpg"
-        ],
-        "affiliateLink": "https://www.amazon.com/Aspire-Copilot-WUXGA-Display-Processor/dp/B0DWNLN3KP",
+        "affiliateLink": "https://www.amazon.com/FoodSaver-VS0150-PowerVac-Compact-Vertical/dp/B08BF3GB5Q?pd_rd_w=Xmr6w&content-id=amzn1.sym.d953c62f-7a9e-4710-a1de-5a2dfe30825a&pf_rd_p=d953c62f-7a9e-4710-a1de-5a2dfe30825a&pf_rd_r=8F02PDNZJSTV6QXNP2G5&pd_rd_wg=ZAs7Y&pd_rd_r=3fb11563-fed9-4936-b2e7-d890e6b2efab&pd_rd_i=B08BF3GB5Q&th=1&linkCode=ll2&tag=codernestdigi-20&linkId=9f01ee50785333d6b89f63c822416f05&language=en_US&ref_=as_li_ss_tl",
+        "category": "General",
         "featured": false,
-        "badge": "AI Powered",
+        "badge": "Today's featured deals",
         "pros": [
-            "Powerful AI Features",
-            "Long Battery Life (22hrs)",
-            "Premium Aluminum Chassis"
+            "High quality",
+            "Reliable performance"
         ],
         "cons": [
-            "Copilot features still in preview",
-            "Integrated graphics"
+            "May be expensive for some",
+            "Limited stock"
         ],
-        "specifications": {
-            "Display": "14 inch WUXGA",
-            "Processor": "Intel Core Ultra 5",
-            "RAM": "16GB LPDDR5X",
-            "Storage": "512GB SSD"
-        },
-        "description": "An AI-ready laptop with a beautiful WUXGA display and incredible 22-hour battery life.",
+        "description": "A comprehensive look at the FoodSaver PowerVac Compact Vacuum Sealing Machine Stainless Steel & Black Vertical Storage VS0150 | Preserves freshness reduces bag waste for both dry and wet food. It offers great value and performance for its category.",
         "faqs": [
             {
-                "q": "Is the RAM upgradeable?",
-                "a": "No, LPDDR5X memory is soldered."
+                "q": "Is it worth the price?",
+                "a": "Based on our analysis, yes it offers solid value."
             }
-        ]
+        ],
+        "id": "p1",
+        "slug": "foodsaver-powervac-compact-vacuum-sealing-machine-stainless-steel-black-vertical-storage-vs0150-preserves-freshness-reduces-bag-waste-for-both-dry-and-wet-food"
     },
     {
-        "id": "p5",
-        "title": "Samsung Odyssey G5 Curved Gaming Monitor",
-        "slug": "samsung-odyssey-g5-review",
-        "category": "Monitors",
-        "price": 279.99,
-        "oldPrice": 329.99,
-        "discount": 15,
-        "rating": 4.6,
+        "title": "",
+        "price": 0,
+        "oldPrice": null,
+        "rating": 0,
         "images": [
-            "https://m.media-amazon.com/images/I/81TjRLRecXL._AC_SX679_.jpg"
+            ""
         ],
-        "affiliateLink": "https://amzn.to/3TV8mY8",
-        "featured": true,
-        "badge": "Best Gaming Monitor",
+        "specifications": {},
+        "affiliateLink": "https://www.amazon.com/PRETTYGARDEN-Outfits-Sleeve-Sweatshirts-Lounge/dp/B0CHRF7K19?pd_rd_w=Xmr6w&content-id=amzn1.sym.d953c62f-7a9e-4710-a1de-5a2dfe30825a&pf_rd_p=d953c62f-7a9e-4710-a1de-5a2dfe30825a&pf_rd_r=8F02PDNZJSTV6QXNP2G5&pd_rd_wg=ZAs7Y&pd_rd_r=3fb11563-fed9-4936-b2e7-d890e6b2efab&pd_rd_i=B0CHRF7K19&th=1&psc=1",
+        "category": "General",
+        "featured": false,
+        "badge": "",
         "pros": [
-            "144Hz Refresh Rate",
-            "1000R Curve for Immersive Gaming",
-            "WQHD Resolution"
+            "High quality",
+            "Reliable performance"
         ],
         "cons": [
-            "VA Panel viewing angles",
-            "Stand has limited adjustment"
+            "May be expensive for some",
+            "Limited stock"
         ],
-        "specifications": {
-            "Display": "27 inch Curved",
-            "Resolution": "2560 x 1440 (WQHD)",
-            "Refresh Rate": "144Hz",
-            "Response Time": "1ms (MPRT)"
-        },
-        "description": "The Samsung Odyssey G5 is the perfect entry-level curved gaming monitor, providing an immersive experience without the premium price tag.",
+        "description": "A comprehensive look at the . It offers great value and performance for its category.",
         "faqs": [
             {
-                "q": "Is this monitor G-Sync compatible?",
-                "a": "It is FreeSync Premium certified and works well with G-Sync compatible cards over DisplayPort."
+                "q": "Is it worth the price?",
+                "a": "Based on our analysis, yes it offers solid value."
             }
-        ]
+        ],
+        "id": "p2"
+    },
+    {
+        "title": "",
+        "price": 0,
+        "oldPrice": null,
+        "rating": 0,
+        "images": [
+            ""
+        ],
+        "specifications": {},
+        "affiliateLink": "https://www.amazon.com/Aspire-Copilot-WUXGA-Display-Processor/dp/B0DWNLN3KP?pd_rd_w=cAhJR&content-id=amzn1.sym.d953c62f-7a9e-4710-a1de-5a2dfe30825a&pf_rd_p=d953c62f-7a9e-4710-a1de-5a2dfe30825a&pf_rd_r=51HPS22T06VR81EEGT08&pd_rd_wg=O4MlH&pd_rd_r=f8fad904-81bb-4d97-a1a3-c748ccc85f36&pd_rd_i=B0DWNLN3KP&linkCode=ll2&tag=codernestdigi-20&linkId=5bcc2c1cebe4f810aec4525981a56011&language=en_US&ref_=as_li_ss_tl",
+        "category": "General",
+        "featured": false,
+        "badge": "",
+        "pros": [
+            "High quality",
+            "Reliable performance"
+        ],
+        "cons": [
+            "May be expensive for some",
+            "Limited stock"
+        ],
+        "description": "A comprehensive look at the . It offers great value and performance for its category.",
+        "faqs": [
+            {
+                "q": "Is it worth the price?",
+                "a": "Based on our analysis, yes it offers solid value."
+            }
+        ],
+        "id": "p3"
+    },
+    {
+        "title": "",
+        "price": 0,
+        "oldPrice": null,
+        "rating": 0,
+        "images": [
+            ""
+        ],
+        "specifications": {},
+        "affiliateLink": "https://www.amazon.com/SAMSUNG-40-Inch-Object-Tracking-Security/dp/B0DXN1CFFR?pf_rd_r=51HPS22T06VR81EEGT08&pf_rd_p=3ad18919-c59e-4977-8ce1-315d93403f16&th=1&linkCode=ll2&tag=codernestdigi-20&linkId=fa8dcb14aa83ff60f5f334adef623ad6&language=en_US&ref_=as_li_ss_tl",
+        "category": "General",
+        "featured": false,
+        "badge": "",
+        "pros": [
+            "High quality",
+            "Reliable performance"
+        ],
+        "cons": [
+            "May be expensive for some",
+            "Limited stock"
+        ],
+        "description": "A comprehensive look at the . It offers great value and performance for its category.",
+        "faqs": [
+            {
+                "q": "Is it worth the price?",
+                "a": "Based on our analysis, yes it offers solid value."
+            }
+        ],
+        "id": "p4"
     }
 ]
