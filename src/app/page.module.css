@@ -1,136 +1,434 @@
 .categories {
-  padding: 6rem 0;
+  padding: 8rem 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .categoryGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem;
 }
 
 .categoryCard {
-  background: var(--bg-card);
-  padding: 2.5rem;
-  border-radius: var(--radius-lg);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  padding: 3rem 2.5rem;
+  border-radius: var(--radius-2xl);
   text-align: center;
-  border: 1px solid var(--border);
-  transition: var(--transition);
+  border: 1px solid var(--border-light);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.categoryCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
 }
 
 .categoryCard:hover {
+  transform: translateY(-12px);
   border-color: var(--primary);
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+}
+
+.categoryCard:hover::before {
+  transform: scaleX(1);
 }
 
 .catIcon {
-  font-size: 3rem;
+  font-size: 3.5rem;
   display: block;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  transition: transform 0.4s ease;
+}
+
+.categoryCard:hover .catIcon {
+  transform: scale(1.1) rotate(5deg);
 }
 
 .categoryCard h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .categoryCard p {
   color: var(--text-muted);
   font-size: 0.95rem;
+  font-weight: 500;
 }
 
 .deals {
-  padding: 6rem 0;
-  background: rgba(99, 102, 241, 0.02);
+  padding: 8rem 0;
+  background: linear-gradient(to bottom, transparent, rgba(99, 102, 241, 0.03), transparent);
 }
 
 .sectionHeader {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
 .viewAll {
   color: var(--primary);
   font-weight: 600;
-  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
 }
 
 .viewAll:hover {
-  gap: 8px;
-  transform: translateX(4px);
+  gap: 12px;
+  color: white;
+  transform: translateX(5px);
 }
 
 .productGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2.5rem;
+  gap: 3rem;
 }
 
+/* Trust Section */
 .trust {
-  padding: 8rem 0;
+  padding: 10rem 0;
+  background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
 }
 
 .trustInner {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
-  gap: 5rem;
+  gap: 6rem;
   align-items: center;
 }
 
 .trustText h2 {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
+  font-size: 3.5rem;
+  margin-bottom: 2rem;
+  line-height: 1.1;
 }
 
 .trustText p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: var(--text-muted);
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   max-width: 600px;
+  line-height: 1.6;
 }
 
 .stats {
-  display: flex;
-  gap: 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 }
 
-.stats h4 {
-  font-size: 2rem;
+.statItem {
+  background: var(--glass-bg);
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-light);
+  text-align: center;
+}
+
+.statItem h4 {
+  font-size: 2.5rem;
   color: var(--primary);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
-.stats p {
-  font-size: 0.95rem;
+.statItem p {
+  font-size: 0.9rem;
   color: var(--text-muted);
   margin-bottom: 0;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .trustImage {
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .trustImg {
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   height: auto;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
-  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.5));
+  animation: float 8s ease-in-out infinite;
 }
 
 @keyframes float {
   0% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(0deg);
   }
 
-  50% {
-    transform: translateY(-20px);
+  33% {
+    transform: translateY(-30px) rotate(2deg);
+  }
+
+  66% {
+    transform: translateY(-15px) rotate(-2deg);
   }
 
   100% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+/* Blog Section */
+.blogSection {
+  padding: 10rem 0;
+  position: relative;
+}
+
+.blogGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
+  margin-top: 5rem;
+}
+
+.blogCard {
+  background: var(--glass-bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+}
+
+.blogCard:hover {
+  transform: translateY(-15px) scale(1.02);
+  border-color: var(--primary);
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.5);
+}
+
+.blogImgWrapper {
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+}
+
+.blogImgWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.blogCard:hover .blogImgWrapper img {
+  transform: scale(1.15);
+}
+
+.blogCat {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: var(--primary);
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.blogContent {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.blogContent h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.blogMeta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: auto;
+}
+
+.blogMeta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* SaaS Promotion Section */
+.saasPromotion {
+  padding: 10rem 0;
+  background: linear-gradient(to bottom, transparent, rgba(99, 102, 241, 0.05));
+}
+
+.saasCard {
+  background: var(--bg-card);
+  background: linear-gradient(135deg, var(--bg-card) 0%, #1e1b4b 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-3xl);
+  padding: 6rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 60px 120px -30px rgba(0, 0, 0, 0.6);
+}
+
+.saasCard::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.saasText .badge {
+  background: rgba(99, 102, 241, 0.2);
+  color: var(--primary-light);
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 2.5rem;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.saasText h2 {
+  font-size: 4rem;
+  line-height: 1.1;
+  margin-bottom: 2.5rem;
+  font-weight: 800;
+}
+
+.saasText p {
+  font-size: 1.35rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 4rem;
+}
+
+.saasActions {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.saasVisual {
+  perspective: 2000px;
+}
+
+.dashboardPreview {
+  background: #0f172a;
+  border-radius: var(--radius-2xl);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 80px 150px -50px rgba(0, 0, 0, 0.8);
+  transform: rotateY(-15deg) rotateX(10deg);
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.previewHeader {
+  background: #1e293b;
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.dots {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dots span:nth-child(1) {
+  background: #ff5f57;
+}
+
+.dots span:nth-child(2) {
+  background: #febc2e;
+}
+
+.dots span:nth-child(3) {
+  background: #28c840;
+}
+
+.searchBar {
+  background: #334155;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1.5rem;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  flex-grow: 1;
+}
+
+.previewContent {
+  padding: 4rem;
+}
+
+.skeletonLine {
+  height: 16px;
+  background: #1e293b;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.skeletonBox {
+  aspect-ratio: 1;
+  background: #1e293b;
+  border-radius: 1rem;
+}
+
+@media (max-width: 1200px) {
+  .saasCard {
+    padding: 4rem;
+  }
+
+  .saasText h2 {
+    font-size: 3rem;
   }
 }
 
@@ -138,7 +436,7 @@
   .trustInner {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 4rem;
+    gap: 5rem;
   }
 
   .trustText p {
@@ -147,241 +445,14 @@
   }
 
   .stats {
-    justify-content: center;
-  }
-
-  .trustImage {
-    max-width: 400px;
+    max-width: 800px;
     margin: 0 auto;
   }
-}
 
-@media (max-width: 640px) {
-  .sectionHeader {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .categoryGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .stats {
-    gap: 1.5rem;
-  }
-
-  /* Blog Section */
-  .blogSection {
-    padding: 8rem 0;
-    background: linear-gradient(to bottom, transparent, rgba(99, 102, 241, 0.05));
-  }
-
-  .blogGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
-    margin-top: 4rem;
-  }
-
-  .blogCard {
-    background: var(--glass-bg);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .blogCard:hover {
-    transform: translateY(-8px);
-    border-color: var(--primary);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-  }
-
-  .blogImgWrapper {
-    height: 200px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .blogImgWrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-  }
-
-  .blogCard:hover .blogImgWrapper img {
-    transform: scale(1.1);
-  }
-
-  .blogCat {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background: var(--primary);
-    color: white;
-    padding: 0.2rem 0.8rem;
-    border-radius: var(--radius-full);
-    font-size: 0.7rem;
-    font-weight: 700;
-  }
-
-  .blogContent {
-    padding: 2rem;
-  }
-
-  .blogContent h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    line-height: 1.3;
-  }
-
-  .blogMeta {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-  }
-
-  .trustText h2 {
-    font-size: 2.25rem;
-  }
-
-  .productGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* SaaS Promotion Section */
-.saasPromotion {
-  padding: 8rem 0;
-  background: linear-gradient(to bottom, rgba(99, 102, 241, 0.05), transparent);
-}
-
-.saasCard {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-2xl);
-  padding: 5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-}
-
-.saasText .badge {
-  background: var(--primary);
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: var(--radius-full);
-  font-size: 0.8rem;
-  font-weight: 700;
-  display: inline-block;
-  margin-bottom: 2rem;
-}
-
-.saasText h2 {
-  font-size: 3.5rem;
-  line-height: 1.1;
-  margin-bottom: 2rem;
-}
-
-.saasText p {
-  font-size: 1.25rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin-bottom: 3rem;
-}
-
-.saasActions {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.saasVisual {
-  perspective: 1000px;
-}
-
-.dashboardPreview {
-  background: #1e293b;
-  border-radius: var(--radius-xl);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5);
-  transform: rotateY(-10deg) rotateX(10deg);
-  overflow: hidden;
-}
-
-.previewHeader {
-  background: #0f172a;
-  padding: 0.75rem 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.dots {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.dots span {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #475569;
-}
-
-.searchBar {
-  background: #1e293b;
-  border-radius: 0.5rem;
-  padding: 0.25rem 1rem;
-  color: #64748b;
-  font-size: 0.8rem;
-  flex-grow: 1;
-}
-
-.previewContent {
-  padding: 2.5rem;
-}
-
-.skeletonLine {
-  height: 12px;
-  background: #334155;
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-}
-
-.skeletonGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.skeletonBox {
-  aspect-ratio: 1;
-  background: #334155;
-  border-radius: 0.5rem;
-}
-
-@media (max-width: 1024px) {
   .saasCard {
     grid-template-columns: 1fr;
-    padding: 3rem;
-    gap: 3rem;
     text-align: center;
-  }
-
-  .saasText h2 {
-    font-size: 2.5rem;
+    gap: 4rem;
   }
 
   .saasActions {
@@ -390,9 +461,35 @@
 
   .saasVisual {
     transform: none;
+    max-width: 600px;
+    margin: 0 auto;
   }
 
   .dashboardPreview {
     transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .trustText h2 {
+    font-size: 2.5rem;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .blogGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .saasText h2 {
+    font-size: 2.2rem;
+  }
+
+  .saasActions {
+    flex-direction: column;
+    gap: 2rem;
   }
 }

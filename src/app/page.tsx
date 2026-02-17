@@ -24,13 +24,13 @@ export default async function Home() {
       {/* Featured Categories */}
       <section className={styles.categories}>
         <div className="container">
-          <h2 className="section-title">Shop by <span className="text-gradient">Category</span></h2>
+          <h2 className="section-title">Explore by <span className="text-gradient">Category</span></h2>
           <div className={styles.categoryGrid}>
             {categories.map((cat) => (
               <Link href={`/categories/${cat.slug}`} key={cat.slug} className={styles.categoryCard}>
                 <span className={styles.catIcon}>{cat.icon}</span>
                 <h3>{cat.name}</h3>
-                <p>{cat.count}+ Products</p>
+                <p>{cat.count}+ Expert Reviews</p>
               </Link>
             ))}
           </div>
@@ -41,9 +41,12 @@ export default async function Home() {
       <section id="deals" className={styles.deals}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <h2 className="section-title" style={{ textAlign: "left", marginBottom: 0 }}>
-              Today&apos;s <span className="text-gradient">Top Picks</span>
-            </h2>
+            <div>
+              <h2 className="section-title" style={{ textAlign: "left", marginBottom: "0.5rem" }}>
+                Hot <span className="text-gradient">Deals</span> Right Now
+              </h2>
+              <p style={{ color: 'var(--text-muted)' }}>Real-time price drops on top-rated electronics.</p>
+            </div>
             <Link href="/deals" className={styles.viewAll}>View all deals →</Link>
           </div>
 
@@ -54,7 +57,11 @@ export default async function Home() {
           </div>
 
           {/* Comparison Section */}
-          <div style={{ marginTop: '4rem' }}>
+          <div style={{ marginTop: '6rem' }}>
+            <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+              <h2 className="section-title">The <span className="text-gradient">Showdown</span></h2>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem' }}>How the top contenders stack up against each other.</p>
+            </div>
             <ComparisonTable
               products={featuredProducts.slice(0, 3)}
               title="Best Value Comparison"
@@ -68,27 +75,27 @@ export default async function Home() {
         <div className="container">
           <div className={styles.trustInner}>
             <div className={styles.trustText}>
-              <h2>Why Hundreds of Readers <span className="text-gradient">Trust Us</span></h2>
+              <h2>We Put Tech to the <span className="text-gradient">Ultimate Test</span></h2>
               <p>
-                We spend hours testing and researching every product we recommend. Our reviews are
-                completely independent, and we only suggest products we would use ourselves.
+                Our mission is to help you buy the best gear without the headache. We buy, test, and break down every product so you make the right choice every time.
               </p>
               <div className={styles.stats}>
-                <div>
+                <div className={styles.statItem}>
                   <h4>500+</h4>
-                  <p>Products Tested</p>
+                  <p>Analyzed</p>
                 </div>
-                <div>
-                  <h4>1M+</h4>
-                  <p>Monthly Readers</p>
+                <div className={styles.statItem}>
+                  <h4>1.2M</h4>
+                  <p>Readers</p>
                 </div>
-                <div>
+                <div className={styles.statItem}>
                   <h4>100%</h4>
-                  <p>Unbiased Reviews</p>
+                  <p>Unbiased</p>
                 </div>
               </div>
             </div>
             <div className={styles.trustImage}>
+              <div className={styles.trustImgGradient}></div>
               <img src="/images/verified.png" alt="Verified Experts" className={styles.trustImg} />
             </div>
           </div>
@@ -98,7 +105,10 @@ export default async function Home() {
       {/* Latest from Blog */}
       <section className={styles.blogSection}>
         <div className="container">
-          <h2 className="section-title">Latest <span className="text-gradient">Insights</span></h2>
+          <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+            <h2 className="section-title">Buying <span className="text-gradient">Guides</span></h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem' }}>Master the market with our deep-dive reviews and tutorials.</p>
+          </div>
           <div className={styles.blogGrid}>
             {blogPosts.slice(0, 3).map((post) => (
               <Link href={`/blog/${post.slug}`} key={post.id} className={styles.blogCard}>
@@ -109,15 +119,15 @@ export default async function Home() {
                 <div className={styles.blogContent}>
                   <h3>{post.title}</h3>
                   <div className={styles.blogMeta}>
-                    <span>By {post.author.name}</span>
-                    <span>{post.readTime}</span>
+                    <span>👤 {post.author.name}</span>
+                    <span>⏱️ {post.readTime}</span>
                   </div>
                 </div>
               </Link>
             ))}
           </div>
-          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <Link href="/blog" className="btn">View All Insights →</Link>
+          <div style={{ textAlign: 'center', marginTop: '5rem' }}>
+            <Link href="/blog" className="btn btn-primary" style={{ padding: '1rem 3rem' }}>Browse All Guides →</Link>
           </div>
         </div>
       </section>
@@ -126,27 +136,27 @@ export default async function Home() {
         <div className="container">
           <div className={styles.saasCard}>
             <div className={styles.saasText}>
-              <span className={styles.badge}>New Feature</span>
-              <h2>Start Your Own <span className="text-gradient">Affiliate Business</span></h2>
-              <p>Love this site? You can build one exactly like it in minutes. Access our powerful Amazon scraper and conversion-optimized templates.</p>
+              <span className={styles.badge}>Next-Gen Platform</span>
+              <h2>Launch Your <span className="text-gradient">Empire</span></h2>
+              <p>Love this high-converting experience? You can launch a similar profitable niche site today with our specialized SaaS toolkit.</p>
               <div className={styles.saasActions}>
-                <Link href="/pricing" className="btn btn-primary">View Pricing Plans</Link>
-                <Link href="/blog" className="viewAll">Learn more →</Link>
+                <Link href="/pricing" className="btn btn-primary" style={{ padding: '1.2rem 3rem', fontSize: '1.1rem' }}>Get Started Now</Link>
+                <Link href="/blog" className={styles.viewAll}>Learn how it works →</Link>
               </div>
             </div>
             <div className={styles.saasVisual}>
               <div className={styles.dashboardPreview}>
                 <div className={styles.previewHeader}>
                   <div className={styles.dots}><span /><span /><span /></div>
-                  <div className={styles.searchBar}>amazon.com/dp/...</div>
+                  <div className={styles.searchBar}>https://your-empire.com/admin</div>
                 </div>
                 <div className={styles.previewContent}>
-                  <div className={styles.skeletonLine} style={{ width: '80%' }} />
-                  <div className={styles.skeletonLine} style={{ width: '100%', height: '40px' }} />
+                  <div className={styles.skeletonLine} style={{ width: '60%', background: 'var(--primary)', opacity: 0.3 }} />
+                  <div className={styles.skeletonLine} style={{ width: '90%' }} />
                   <div className={styles.skeletonGrid}>
-                    <div className={styles.skeletonBox} />
-                    <div className={styles.skeletonBox} />
-                    <div className={styles.skeletonBox} />
+                    <div className={styles.skeletonBox} style={{ background: 'linear-gradient(45deg, #1e293b, #334155)' }} />
+                    <div className={styles.skeletonBox} style={{ background: 'linear-gradient(45deg, #1e293b, #334155)' }} />
+                    <div className={styles.skeletonBox} style={{ background: 'linear-gradient(45deg, #1e293b, #334155)' }} />
                   </div>
                 </div>
               </div>
