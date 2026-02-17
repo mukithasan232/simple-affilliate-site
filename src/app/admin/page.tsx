@@ -45,6 +45,23 @@ export default function AdminPage() {
         }
     };
 
+    const handleManualAdd = () => {
+        setEditingProduct({
+            title: "",
+            price: 0,
+            category: "General",
+            images: [],
+            affiliateLink: "",
+            brand: "",
+            specifications: {},
+            faqs: [],
+            pros: [],
+            cons: [],
+            description: ""
+        });
+        setIsModalOpen(true);
+    };
+
     const handleScrape = async () => {
         if (!scrapeUrl) return;
         setIsLoading(true);
@@ -82,12 +99,16 @@ export default function AdminPage() {
     const handleSave = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
+            const product = { ...editingProduct };
+            if (!product.id) product.id = 'p' + Date.now();
+            if (!product.slug) product.slug = product.title.toLowerCase().replace(/[^a-z0-9]/g, '-');
+
             const res = await fetch("/api/products", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(editingProduct),
+                body: JSON.stringify(product),
             });
             if (res.ok) {
                 alert("Product saved successfully!");
@@ -227,6 +248,13 @@ export default function AdminPage() {
                                 {isLoading ? "Scraping..." : "Smart Add"}
                             </button>
                         </div>
+                        <button
+                            className="btn"
+                            onClick={handleManualAdd}
+                            style={{ border: '1px solid var(--border)', background: 'var(--bg-card)' }}
+                        >
+                            + Manual Add
+                        </button>
                     </div>
                 </header>
 
@@ -319,6 +347,26 @@ export default function AdminPage() {
                                         type="text"
                                         value={editingProduct?.title}
                                         onChange={(e) => setEditingProduct({ ...editingProduct, title: e.target.value })}
+                                        required
+                                    />
+                                </div>
+                                <div className={styles.formGroup}>
+                                    <label>Slug (URL handle)</label>
+                                    <input
+                                        type="text"
+                                        value={editingProduct?.slug}
+                                        onChange={(e) => setEditingProduct({ ...editingProduct, slug: e.target.value })}
+                                        placeholder="e.g., acer-nitro-5"
+                                        required
+                                    />
+                                </div>
+                                <div className={styles.formGroup}>
+                                    <label>Image URL</label>
+                                    <input
+                                        type="text"
+                                        value={editingProduct?.images?.[0] || ""}
+                                        onChange={(e) => setEditingProduct({ ...editingProduct, images: [e.target.value] })}
+                                        placeholder="https://..."
                                     />
                                 </div>
                                 <div className={styles.formGroup}>
