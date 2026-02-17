@@ -1,6 +1,6 @@
 import ProductCard from "@/components/product/ProductCard";
-import products from "@/data/products.json";
 import styles from "../categories.module.css";
+import { getProductsByCategory } from "@/lib/products";
 import { notFound } from "next/navigation";
 import ComparisonTable from "@/components/ui/ComparisonTable";
 
@@ -20,9 +20,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
     // Map slugs to display names if needed, or just capitalize
     const categoryName = slug.charAt(0).toUpperCase() + slug.slice(1);
 
-    const categoryProducts = products.filter(
-        p => p.category.toLowerCase() === slug.toLowerCase()
-    );
+    const categoryProducts: any[] = await getProductsByCategory(slug);
 
     if (categoryProducts.length === 0) {
         // Fallback: search for similar or show all

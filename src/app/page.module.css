@@ -112,16 +112,26 @@
   position: relative;
 }
 
-.placeholderImg {
-  aspect-ratio: 1;
-  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-body) 100%);
-  border: 1px solid var(--border);
-  border-radius: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 4rem;
-  box-shadow: var(--shadow-xl);
+.trustImg {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 @media (max-width: 1024px) {
@@ -244,5 +254,145 @@
 
   .productGrid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* SaaS Promotion Section */
+.saasPromotion {
+  padding: 8rem 0;
+  background: linear-gradient(to bottom, rgba(99, 102, 241, 0.05), transparent);
+}
+
+.saasCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2xl);
+  padding: 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.saasText .badge {
+  background: var(--primary);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+.saasText h2 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+}
+
+.saasText p {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+
+.saasActions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.saasVisual {
+  perspective: 1000px;
+}
+
+.dashboardPreview {
+  background: #1e293b;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5);
+  transform: rotateY(-10deg) rotateX(10deg);
+  overflow: hidden;
+}
+
+.previewHeader {
+  background: #0f172a;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #475569;
+}
+
+.searchBar {
+  background: #1e293b;
+  border-radius: 0.5rem;
+  padding: 0.25rem 1rem;
+  color: #64748b;
+  font-size: 0.8rem;
+  flex-grow: 1;
+}
+
+.previewContent {
+  padding: 2.5rem;
+}
+
+.skeletonLine {
+  height: 12px;
+  background: #334155;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+}
+
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.skeletonBox {
+  aspect-ratio: 1;
+  background: #334155;
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 1024px) {
+  .saasCard {
+    grid-template-columns: 1fr;
+    padding: 3rem;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  .saasText h2 {
+    font-size: 2.5rem;
+  }
+
+  .saasActions {
+    justify-content: center;
+  }
+
+  .saasVisual {
+    transform: none;
+  }
+
+  .dashboardPreview {
+    transform: none;
   }
 }

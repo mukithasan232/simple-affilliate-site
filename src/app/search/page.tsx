@@ -1,12 +1,13 @@
 import Fuse from 'fuse.js';
-import products from '@/data/products.json';
 import Link from 'next/link';
 import ProductCard from '@/components/product/ProductCard';
 import styles from './search.module.css';
+import { getAllProducts } from "@/lib/products";
 
 export default async function SearchPage({ searchParams }: { searchParams: Promise<{ q: string }> }) {
     const { q } = await searchParams;
     const query = q || "";
+    const products: any[] = await getAllProducts();
 
     const fuse = new Fuse(products, {
         keys: ['title', 'category', 'description', 'badge'],

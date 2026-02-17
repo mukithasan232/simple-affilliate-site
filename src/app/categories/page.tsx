@@ -1,10 +1,11 @@
 import ProductCard from "@/components/product/ProductCard";
-import products from "@/data/products.json";
 import styles from "./categories.module.css";
 import Link from "next/link";
 import ComparisonTable from "@/components/ui/ComparisonTable";
+import { getAllProducts } from "@/lib/products";
 
-export default function CategoriesPage() {
+export default async function CategoriesPage() {
+    const products: any[] = await getAllProducts();
     const categories = [...new Set(products.map((p) => p.category))];
 
     return (

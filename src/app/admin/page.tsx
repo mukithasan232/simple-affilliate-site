@@ -1,35 +1,47 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSession, signIn, signOut } from "next-auth/react";
 import styles from "./admin.module.css";
 
 export default function AdminPage() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [password, setPassword] = useState("");
+    const { data: session, status } = useSession();
     const [productList, setProductList] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [scrapeUrl, setScrapeUrl] = useState("");
     const [editingProduct, setEditingProduct] = useState<any>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [deletingProductId, setDeletingProductId] = useState<string | null>(null);
+
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [loginError, setLoginError] = useState("");
 
     useEffect(() => {
-        if (isLoggedIn) {
+        if (session) {
             fetchProducts();
         }
-    }, [isLoggedIn]);
+    }, [session]);
 
     const fetchProducts = async () => {
         const res = await fetch("/api/products");
         const data = await res.json();
-        setProductList(data);
+        if (Array.isArray(data)) {
+            setProductList(data);
+        }
     };
 
-    const handleLogin = (e: React.FormEvent) => {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (password === "admin123") {
-            setIsLoggedIn(true);
-        } else {
-            alert("Invalid password");
+        setLoginError("");
+        const result = await signIn("credentials", {
+            username,
+            password,
+            redirect: false,
+        });
+
+        if (result?.error) {
+            setLoginError("Invalid username or password");
         }
     };
 
@@ -41,7 +53,6 @@ export default function AdminPage() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "x-admin-secret": password
                 },
                 body: JSON.stringify({ url: scrapeUrl }),
             });
@@ -63,7 +74,6 @@ export default function AdminPage() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "x-admin-secret": password
                 },
                 body: JSON.stringify(editingProduct),
             });
@@ -85,7 +95,6 @@ export default function AdminPage() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "x-admin-secret": password
                 },
                 body: JSON.stringify({ url: product.affiliateLink }),
             });
@@ -96,7 +105,7 @@ export default function AdminPage() {
             const updatedProduct = { ...data, id: product.id, affiliateLink: product.affiliateLink };
             setEditingProduct(updatedProduct);
 
-            // Auto-save immediately or open modal? Let's open modal for review
+            // Open modal for review
             setIsModalOpen(true);
         } catch (error: any) {
             alert(error.message);
@@ -105,36 +114,79 @@ export default function AdminPage() {
         }
     };
 
-    const handleDelete = async (id: string) => {
-        if (!confirm("Are you sure you want to delete this product?")) return;
+    const handleDeleteClick = (id: string) => {
+        setDeletingProductId(id);
+    };
+
+    const confirmDelete = async () => {
+        if (!deletingProductId) return;
+        setIsLoading(true);
         try {
-            const res = await fetch(`/api/products?id=${id}`, {
+            const res = await fetch(`/api/products?id=${deletingProductId}`, {
                 method: "DELETE",
-                headers: {
-                    "x-admin-secret": password
-                }
             });
-            if (res.ok) fetchProducts();
-            else alert("Action failed. If you're on Vercel, ensure ADMIN_SECRET is set in project settings (fallback: admin123).");
+            if (res.ok) {
+                fetchProducts();
+                setDeletingProductId(null);
+            } else {
+                const data = await res.json();
+                alert(data.error || "Delete failed");
+            }
         } catch (error) {
             alert("Delete failed");
+        } finally {
+            setIsLoading(false);
         }
     };
 
-    if (!isLoggedIn) {
+    if (status === "loading") {
+        return <div className={styles.loading}>Loading Dashboard...</div>;
+    }
+
+    if (!session) {
         return (
             <div className={styles.loginPage}>
-                <form onSubmit={handleLogin} className={styles.loginForm}>
-                    <h1>Admin Access</h1>
-                    <input
-                        type="password"
-                        placeholder="Enter password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className={styles.loginInput}
-                    />
-                    <button type="submit" className="btn btn-primary">Login</button>
-                </form>
+                <div className={styles.loginForm}>
+                    <h1>Admin <span className="text-gradient">Access</span></h1>
+                    <p>Enter your credentials to manage your affiliate site.</p>
+
+                    <form onSubmit={handleLogin} style={{ marginTop: '2rem' }}>
+                        <div style={{ marginBottom: '1rem' }}>
+                            <input
+                                type="text"
+                                placeholder="Username"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                className={styles.loginInput}
+                                required
+                                style={{ width: '100%', padding: '0.8rem', borderRadius: '8px', border: '1px solid var(--border)', background: 'var(--bg-card)', color: 'var(--text-body)' }}
+                            />
+                        </div>
+                        <div style={{ marginBottom: '1rem' }}>
+                            <input
+                                type="password"
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className={styles.loginInput}
+                                required
+                                style={{ width: '100%', padding: '0.8rem', borderRadius: '8px', border: '1px solid var(--border)', background: 'var(--bg-card)', color: 'var(--text-body)' }}
+                            />
+                        </div>
+                        {loginError && <p style={{ color: '#ef4444', fontSize: '0.9rem', marginBottom: '1rem' }}>{loginError}</p>}
+                        <button
+                            type="submit"
+                            className="btn btn-primary"
+                            style={{ width: '100%' }}
+                        >
+                            Log In
+                        </button>
+                    </form>
+
+                    <p style={{ marginTop: '2rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+                        Don't have an account? <a href="/pricing" style={{ color: 'var(--primary)' }}>View Pricing</a>
+                    </p>
+                </div>
             </div>
         );
     }
@@ -196,7 +248,7 @@ export default function AdminPage() {
                             {productList.map((p) => (
                                 <tr key={p.id}>
                                     <td>
-                                        <img src={p.image} alt="" className={styles.tableImg} />
+                                        <img src={p.images?.[0]} alt="" className={styles.tableImg} />
                                     </td>
                                     <td>
                                         <div className={styles.titleCell}>{p.title}</div>
@@ -211,7 +263,7 @@ export default function AdminPage() {
                                         <button className={styles.refreshBtn} onClick={() => handleRefresh(p)} title="Re-scrape Price">
                                             ↻
                                         </button>
-                                        <button className={styles.deleteBtn} onClick={() => handleDelete(p.id)}>Delete</button>
+                                        <button className={styles.deleteBtn} onClick={() => handleDeleteClick(p.id)}>Delete</button>
                                     </td>
                                 </tr>
                             ))}
@@ -220,10 +272,33 @@ export default function AdminPage() {
                 </div>
             </div>
 
+            {deletingProductId && (
+                <div className={styles.modalOverlay}>
+                    <div className={styles.deleteModal}>
+                        <h2>Confirm <span className="text-gradient">Deletion</span></h2>
+                        <p>Are you sure you want to delete this product? This action cannot be undone.</p>
+                        <div className={styles.modalActions}>
+                            <button className="btn" onClick={() => setDeletingProductId(null)}>Cancel</button>
+                            <button className={`btn ${styles.btnDanger}`} onClick={confirmDelete} disabled={isLoading}>
+                                {isLoading ? "Deleting..." : "Delete Permanently"}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {isModalOpen && (
                 <div className={styles.modalOverlay}>
                     <div className={styles.modal}>
                         <h2>Confirm <span className="text-gradient">Scraped Data</span></h2>
+
+                        {editingProduct?.images?.[0] && (
+                            <div className={styles.scrapedPreview}>
+                                <img src={editingProduct.images[0]} alt="Preview" />
+                                <p>Image successfully detected</p>
+                            </div>
+                        )}
+
                         <form onSubmit={handleSave} className={styles.editForm}>
                             <div className={styles.formGrid}>
                                 <div className={styles.formGroup}>
@@ -276,7 +351,9 @@ export default function AdminPage() {
                             </div>
                             <div className={styles.modalActions}>
                                 <button type="button" className="btn" onClick={() => setIsModalOpen(false)}>Cancel</button>
-                                <button type="submit" className="btn btn-primary">Add Product To Live Site</button>
+                                <button type="submit" className="btn btn-primary">
+                                    {editingProduct?.id ? "Update Live Product" : "Add to Live Site"}
+                                </button>
                             </div>
                         </form>
                     </div>

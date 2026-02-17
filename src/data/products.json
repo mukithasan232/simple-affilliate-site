@@ -37,93 +37,93 @@
         "slug": "foodsaver-powervac-compact-vacuum-sealing-machine-stainless-steel-black-vertical-storage-vs0150-preserves-freshness-reduces-bag-waste-for-both-dry-and-wet-food"
     },
     {
-        "title": "",
-        "price": 0,
-        "oldPrice": null,
-        "rating": 0,
+        "title": "PRETTYGARDEN Women's 2 Piece Outfit",
+        "price": 35.99,
+        "oldPrice": 45.99,
+        "rating": 4.5,
         "images": [
-            ""
+            "https://m.media-amazon.com/images/I/61tC-dGZ0LL._AC_SY741_.jpg"
         ],
         "specifications": {},
         "affiliateLink": "https://www.amazon.com/PRETTYGARDEN-Outfits-Sleeve-Sweatshirts-Lounge/dp/B0CHRF7K19?pd_rd_w=Xmr6w&content-id=amzn1.sym.d953c62f-7a9e-4710-a1de-5a2dfe30825a&pf_rd_p=d953c62f-7a9e-4710-a1de-5a2dfe30825a&pf_rd_r=8F02PDNZJSTV6QXNP2G5&pd_rd_wg=ZAs7Y&pd_rd_r=3fb11563-fed9-4936-b2e7-d890e6b2efab&pd_rd_i=B0CHRF7K19&th=1&psc=1",
         "category": "General",
         "featured": false,
-        "badge": "",
+        "badge": "Best Seller",
         "pros": [
-            "High quality",
-            "Reliable performance"
+            "Comfortable fit",
+            "Stylish design"
         ],
         "cons": [
-            "May be expensive for some",
-            "Limited stock"
+            "Sizing varies"
         ],
-        "description": "A comprehensive look at the . It offers great value and performance for its category.",
+        "description": "A stylish and comfortable 2-piece outfit perfect for lounging or casual wear.",
         "faqs": [
             {
-                "q": "Is it worth the price?",
-                "a": "Based on our analysis, yes it offers solid value."
+                "q": "Is it true to size?",
+                "a": "Most customers report it fits true to size."
             }
         ],
-        "id": "p2"
+        "id": "p2",
+        "slug": "prettygarden-womens-2-piece-outfit"
     },
     {
-        "title": "",
-        "price": 0,
-        "oldPrice": null,
-        "rating": 0,
+        "title": "Acer Aspire Copilot+ Laptop",
+        "price": 699.99,
+        "oldPrice": 799.99,
+        "rating": 4.3,
         "images": [
-            ""
+            "https://m.media-amazon.com/images/I/71S8U9VzLTL._AC_SX679_.jpg"
         ],
         "specifications": {},
         "affiliateLink": "https://www.amazon.com/Aspire-Copilot-WUXGA-Display-Processor/dp/B0DWNLN3KP?pd_rd_w=cAhJR&content-id=amzn1.sym.d953c62f-7a9e-4710-a1de-5a2dfe30825a&pf_rd_p=d953c62f-7a9e-4710-a1de-5a2dfe30825a&pf_rd_r=51HPS22T06VR81EEGT08&pd_rd_wg=O4MlH&pd_rd_r=f8fad904-81bb-4d97-a1a3-c748ccc85f36&pd_rd_i=B0DWNLN3KP&linkCode=ll2&tag=codernestdigi-20&linkId=5bcc2c1cebe4f810aec4525981a56011&language=en_US&ref_=as_li_ss_tl",
-        "category": "General",
-        "featured": false,
-        "badge": "",
+        "category": "Electronics",
+        "featured": true,
+        "badge": "New Arrival",
         "pros": [
-            "High quality",
-            "Reliable performance"
+            "Fast processor",
+            "Great display"
         ],
         "cons": [
-            "May be expensive for some",
-            "Limited stock"
+            "Average battery life"
         ],
-        "description": "A comprehensive look at the . It offers great value and performance for its category.",
+        "description": "Experience next-gen performance with the Acer Aspire Copilot+ Laptop.",
         "faqs": [
             {
-                "q": "Is it worth the price?",
-                "a": "Based on our analysis, yes it offers solid value."
+                "q": "Does it have a backlit keyboard?",
+                "a": "Yes, it comes with a backlit keyboard."
             }
         ],
-        "id": "p3"
+        "id": "p3",
+        "slug": "acer-aspire-copilot-laptop"
     },
     {
-        "title": "",
-        "price": 0,
-        "oldPrice": null,
-        "rating": 0,
+        "title": "SAMSUNG 40-Inch Security Monitor",
+        "price": 299.99,
+        "oldPrice": 349.99,
+        "rating": 4.6,
         "images": [
-            ""
+            "https://m.media-amazon.com/images/I/81PKPqjN8qL._AC_SX679_.jpg"
         ],
         "specifications": {},
         "affiliateLink": "https://www.amazon.com/SAMSUNG-40-Inch-Object-Tracking-Security/dp/B0DXN1CFFR?pf_rd_r=51HPS22T06VR81EEGT08&pf_rd_p=3ad18919-c59e-4977-8ce1-315d93403f16&th=1&linkCode=ll2&tag=codernestdigi-20&linkId=fa8dcb14aa83ff60f5f334adef623ad6&language=en_US&ref_=as_li_ss_tl",
-        "category": "General",
+        "category": "Electronics",
         "featured": false,
-        "badge": "",
+        "badge": "Top Rated",
         "pros": [
-            "High quality",
-            "Reliable performance"
+            "Clear resolution",
+            "Reliable security features"
         ],
         "cons": [
-            "May be expensive for some",
-            "Limited stock"
+            "Requires setup"
         ],
-        "description": "A comprehensive look at the . It offers great value and performance for its category.",
+        "description": "Keep your property safe with the high-resolution SAMSUNG 40-Inch Security Monitor.",
         "faqs": [
             {
-                "q": "Is it worth the price?",
-                "a": "Based on our analysis, yes it offers solid value."
+                "q": "Is it weather resistant?",
+                "a": "This model is designed for indoor use."
             }
         ],
-        "id": "p4"
+        "id": "p4",
+        "slug": "samsung-40-inch-security-monitor"
     }
 ]

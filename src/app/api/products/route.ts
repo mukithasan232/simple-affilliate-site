@@ -2,10 +2,12 @@ import { NextResponse } from "next/server";
 import sql from "@/lib/db"; // Use Neon Postgres
 import products from "@/data/products.json"; // Fallback for initial seeding
 
-function isAdmin(req: Request) {
-    const secret = req.headers.get("x-admin-secret");
-    const ADMIN_SECRET = process.env.ADMIN_SECRET || "admin123";
-    return secret === ADMIN_SECRET;
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+
+async function isAdmin() {
+    const session: any = await getServerSession(authOptions);
+    return session?.user?.role === "admin";
 }
 
 // Transform snake_case DB rows to camelCase frontend objects
@@ -70,7 +72,7 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
-    if (!isAdmin(req)) {
+    if (!await isAdmin()) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -132,7 +134,7 @@ export async function POST(req: Request) {
 }
 
 export async function DELETE(req: Request) {
-    if (!isAdmin(req)) {
+    if (!await isAdmin()) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -146,6 +148,7 @@ export async function DELETE(req: Request) {
     if (!id) return NextResponse.json({ error: "ID required" }, { status: 400 });
 
     try {
+        console.log("Database: deleting product with ID:", id);
         await sql`DELETE FROM products WHERE id = ${id}`;
         return NextResponse.json({ success: true });
     } catch (error: any) {

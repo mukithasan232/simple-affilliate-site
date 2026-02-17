@@ -2,7 +2,7 @@ import blogPosts from "@/data/blog.json";
 import { notFound } from "next/navigation";
 import styles from "./article.module.css";
 import ProductCard from "@/components/product/ProductCard";
-import productsData from "@/data/products.json";
+import { getProductsByIds } from "@/lib/products";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
@@ -23,7 +23,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         notFound();
     }
 
-    const recommendedProducts = productsData.filter(p => post.recommendedProducts?.includes(p.id));
+    const recommendedProducts: any[] = await getProductsByIds(post.recommendedProducts || []);
 
     // Schema Markup for Article
     const jsonLd = {

@@ -1,11 +1,13 @@
 import { NextResponse } from "next/server";
 import { JSDOM } from "jsdom";
 
-export async function POST(req: Request) {
-    const secret = req.headers.get("x-admin-secret");
-    const ADMIN_SECRET = process.env.ADMIN_SECRET || "admin123";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
-    if (secret !== ADMIN_SECRET) {
+export async function POST(req: Request) {
+    const session: any = await getServerSession(authOptions);
+
+    if (session?.user?.role !== "admin") {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -32,18 +34,51 @@ export async function POST(req: Request) {
 
         // Extracting Data
         const title = getText("#productTitle");
-        const priceRaw = getText(".a-price .a-offscreen") || getText("#priceblock_ourprice") || getText("#priceblock_dealprice");
-        const oldPriceRaw = getText(".a-price.a-text-price span[aria-hidden='true']");
+
+        // Price Selectors (Amazon changes these often)
+        const priceSelectors = [
+            ".a-price .a-offscreen",
+            "#priceblock_ourprice",
+            "#priceblock_dealprice",
+            ".a-price.a-text-price .a-offscreen",
+            "#kindle-price",
+            "#price_inside_buybox"
+        ];
+
+        let priceRaw = "";
+        for (const selector of priceSelectors) {
+            priceRaw = getText(selector);
+            if (priceRaw) break;
+        }
+
+        const oldPriceRaw = getText(".a-price.a-text-price span[aria-hidden='true']") || getText(".basisPrice .a-offscreen");
+
         const price = parseFloat(priceRaw.replace(/[^0-9.]/g, "")) || 0;
         const oldPrice = parseFloat(oldPriceRaw.replace(/[^0-9.]/g, "")) || null;
-        const ratingRaw = getText("#acrCustomerReviewText").split(" ")[0];
-        const rating = parseFloat(getText(".a-icon-alt").split(" ")[0]) || 0;
 
-        // Image URL - usually in a script or a specific img tag
-        const imgTag = document.querySelector("#landingImage") as HTMLImageElement;
-        const image = imgTag?.src || "";
+        // Rating
+        const ratingText = getText(".a-icon-alt");
+        const rating = parseFloat(ratingText.split(" ")[0]) || 0;
 
-        // Specifications (Object from bullets)
+        // Image URL - Better extraction
+        let images: string[] = [];
+        const imgTag = document.querySelector("#landingImage") || document.querySelector("#imgBlkFront") || document.querySelector("#ebooksImgBlkFront");
+
+        if (imgTag) {
+            const dynamicImage = imgTag.getAttribute("data-a-dynamic-image");
+            if (dynamicImage) {
+                try {
+                    const imgObj = JSON.parse(dynamicImage);
+                    images = [Object.keys(imgObj)[0]]; // Get the first (usually highest res) image
+                } catch (e) {
+                    images = [(imgTag as HTMLImageElement).src];
+                }
+            } else {
+                images = [(imgTag as HTMLImageElement).src];
+            }
+        }
+
+        // Specifications
         const specifications: Record<string, string> = {};
         const features = Array.from(document.querySelectorAll("#feature-bullets li span"))
             .map(span => span.textContent?.trim())
@@ -54,7 +89,7 @@ export async function POST(req: Request) {
             if (f) {
                 const parts = f.split(":");
                 if (parts.length > 1) specifications[parts[0].trim()] = parts[1].trim();
-                else specifications[`Detail ${i + 1}`] = f;
+                else specifications[`Feature ${i + 1}`] = f;
             }
         });
 
@@ -63,7 +98,7 @@ export async function POST(req: Request) {
             price,
             oldPrice,
             rating,
-            images: [image],
+            images,
             specifications,
             affiliateLink: url,
             category: "General", // Default category

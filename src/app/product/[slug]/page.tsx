@@ -10,13 +10,13 @@ import ComparisonTable from "@/components/ui/ComparisonTable";
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
-    const product = getProductBySlug(slug);
+    const product: any = await getProductBySlug(slug);
 
     if (!product) {
         notFound();
     }
 
-    const relatedProducts = getProductsByCategory(product.category).filter((p: any) => p.id !== product.id);
+    const relatedProducts: any[] = (await getProductsByCategory(product.category)).filter((p: any) => p.id !== product.id);
 
     // Schema Markup
     const jsonLd = {

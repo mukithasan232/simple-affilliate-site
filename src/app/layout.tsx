@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ExitIntent from "@/components/ui/ExitIntent";
 import { ThemeProvider } from "@/components/layout/ThemeContext";
+import { AuthProvider } from "@/components/layout/AuthProvider";
 
 export const metadata: Metadata = {
   title: "Affiliate Pro - Modern Amazon Niche Website",
@@ -17,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Google Analytics */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-GPDKJEHLL2"></script>
@@ -33,12 +34,14 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <ThemeProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <ExitIntent />
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+            <ExitIntent />
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );

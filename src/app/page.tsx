@@ -1,14 +1,14 @@
 import Hero from "@/components/home/Hero";
 import ProductCard from "@/components/product/ProductCard";
-import products from "@/data/products.json";
 import styles from "./page.module.css";
 import Link from "next/link";
 import ComparisonTable from "@/components/ui/ComparisonTable";
 import blogPosts from "@/data/blog.json";
 import Newsletter from "@/components/ui/Newsletter";
+import { getFeaturedProducts } from "@/lib/products";
 
-export default function Home() {
-  const featuredProducts = products.filter(p => p.featured);
+export default async function Home() {
+  const featuredProducts: any[] = await getFeaturedProducts();
 
   const categories = [
     { name: "Laptops", icon: "💻", slug: "laptops", count: 12 },
@@ -89,9 +89,7 @@ export default function Home() {
               </div>
             </div>
             <div className={styles.trustImage}>
-              <div className={styles.placeholderImg}>
-                🛡️ Verified
-              </div>
+              <img src="/images/verified.png" alt="Verified Experts" className={styles.trustImg} />
             </div>
           </div>
         </div>
@@ -120,6 +118,39 @@ export default function Home() {
           </div>
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             <Link href="/blog" className="btn">View All Insights →</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.saasPromotion}>
+        <div className="container">
+          <div className={styles.saasCard}>
+            <div className={styles.saasText}>
+              <span className={styles.badge}>New Feature</span>
+              <h2>Start Your Own <span className="text-gradient">Affiliate Business</span></h2>
+              <p>Love this site? You can build one exactly like it in minutes. Access our powerful Amazon scraper and conversion-optimized templates.</p>
+              <div className={styles.saasActions}>
+                <Link href="/pricing" className="btn btn-primary">View Pricing Plans</Link>
+                <Link href="/blog" className="viewAll">Learn more →</Link>
+              </div>
+            </div>
+            <div className={styles.saasVisual}>
+              <div className={styles.dashboardPreview}>
+                <div className={styles.previewHeader}>
+                  <div className={styles.dots}><span /><span /><span /></div>
+                  <div className={styles.searchBar}>amazon.com/dp/...</div>
+                </div>
+                <div className={styles.previewContent}>
+                  <div className={styles.skeletonLine} style={{ width: '80%' }} />
+                  <div className={styles.skeletonLine} style={{ width: '100%', height: '40px' }} />
+                  <div className={styles.skeletonGrid}>
+                    <div className={styles.skeletonBox} />
+                    <div className={styles.skeletonBox} />
+                    <div className={styles.skeletonBox} />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
