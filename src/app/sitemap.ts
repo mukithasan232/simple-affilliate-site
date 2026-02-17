@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next'
 import { getAllProducts } from '@/lib/products'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://simple-affilliate-site.vercel.app'
-    const products = getAllProducts()
+    const products = await getAllProducts()
 
     const productEntries = products.map((p) => ({
         url: `${baseUrl}/product/${p.slug}`,
