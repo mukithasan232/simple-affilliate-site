@@ -345,7 +345,7 @@ export default function AdminPage() {
                                     <label>Title</label>
                                     <input
                                         type="text"
-                                        value={editingProduct?.title}
+                                        value={editingProduct?.title || ""}
                                         onChange={(e) => setEditingProduct({ ...editingProduct, title: e.target.value })}
                                         required
                                     />
@@ -354,7 +354,7 @@ export default function AdminPage() {
                                     <label>Slug (URL handle)</label>
                                     <input
                                         type="text"
-                                        value={editingProduct?.slug}
+                                        value={editingProduct?.slug || ""}
                                         onChange={(e) => setEditingProduct({ ...editingProduct, slug: e.target.value })}
                                         placeholder="e.g., acer-nitro-5"
                                         required
@@ -374,14 +374,14 @@ export default function AdminPage() {
                                     <input
                                         type="number"
                                         step="0.01"
-                                        value={editingProduct?.price}
+                                        value={editingProduct?.price || 0}
                                         onChange={(e) => setEditingProduct({ ...editingProduct, price: parseFloat(e.target.value) })}
                                     />
                                 </div>
                                 <div className={styles.formGroup}>
                                     <label>Category</label>
                                     <select
-                                        value={editingProduct?.category}
+                                        value={editingProduct?.category || "General"}
                                         onChange={(e) => setEditingProduct({ ...editingProduct, category: e.target.value })}
                                     >
                                         <option value="Laptops">Laptops</option>
@@ -395,7 +395,7 @@ export default function AdminPage() {
                                     <label>Badge</label>
                                     <input
                                         type="text"
-                                        value={editingProduct?.badge}
+                                        value={editingProduct?.badge || ""}
                                         onChange={(e) => setEditingProduct({ ...editingProduct, badge: e.target.value })}
                                         placeholder="e.g., Best Overall"
                                     />
@@ -404,7 +404,7 @@ export default function AdminPage() {
                                     <label>Affiliate Link</label>
                                     <input
                                         type="text"
-                                        value={editingProduct?.affiliateLink}
+                                        value={editingProduct?.affiliateLink || ""}
                                         onChange={(e) => setEditingProduct({ ...editingProduct, affiliateLink: e.target.value })}
                                     />
                                 </div>
