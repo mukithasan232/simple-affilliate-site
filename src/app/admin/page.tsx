@@ -56,8 +56,20 @@ export default function AdminPage() {
                 },
                 body: JSON.stringify({ url: scrapeUrl }),
             });
+
+            if (!res.ok) {
+                const text = await res.text();
+                let errorMessage = "Failed to scrape product data.";
+                try {
+                    const errorData = JSON.parse(text);
+                    errorMessage = errorData.error || errorMessage;
+                } catch (e) {
+                    errorMessage = `Server Error (${res.status}). Amazon might be blocking the request.`;
+                }
+                throw new Error(errorMessage);
+            }
+
             const data = await res.json();
-            if (data.error) throw new Error(data.error);
             setEditingProduct(data);
             setIsModalOpen(true);
         } catch (error: any) {

@@ -26,6 +26,13 @@ export async function POST(req: Request) {
         });
 
         const html = await response.text();
+
+        if (html.includes("To discuss automated access to Amazon data please contact") || html.includes("captcha")) {
+            return NextResponse.json({
+                error: "Amazon blocked the request. This is common on cloud servers. Try again in a few minutes or add products manually."
+            }, { status: 403 });
+        }
+
         const dom = new JSDOM(html);
         const document = dom.window.document;
 
