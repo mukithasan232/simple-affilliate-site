@@ -87,3 +87,29 @@ export async function getProductsByIds(ids: string[]) {
     }
     return products.filter(p => ids.includes(p.id));
 }
+
+export async function getCategories() {
+    if (sql) {
+        try {
+            const rows = await sql`SELECT category, COUNT(*) as count FROM products GROUP BY category ORDER BY count DESC`;
+            return rows.map(r => ({
+                name: r.category,
+                slug: r.category.toLowerCase().replace(/ /g, '-'),
+                count: parseInt(r.count)
+            }));
+        } catch (error) {
+            console.error("DB Error fetch categories:", error);
+        }
+    }
+
+    // Fallback to static products JSON
+    const cats: Record<string, number> = {};
+    products.forEach(p => {
+        cats[p.category] = (cats[p.category] || 0) + 1;
+    });
+    return Object.entries(cats).map(([name, count]) => ({
+        name,
+        slug: name.toLowerCase().replace(/ /g, '-'),
+        count
+    }));
+}
