@@ -5,21 +5,33 @@ import Link from "next/link";
 import ComparisonTable from "@/components/ui/ComparisonTable";
 import blogPosts from "@/data/blog.json";
 import Newsletter from "@/components/ui/Newsletter";
-import { getFeaturedProducts } from "@/lib/products";
+import { getFeaturedProducts, getCategories, getAllProducts } from "@/lib/products";
 import Benefits from "@/components/home/Benefits";
 import Testimonials from "@/components/home/Testimonials";
 
 export default async function Home() {
-  const featuredProducts: any[] = await getFeaturedProducts();
-  const laptopProducts = featuredProducts.filter(p => p.category.toLowerCase() === 'laptops').slice(0, 2);
-  const audioProducts = featuredProducts.filter(p => p.category.toLowerCase() === 'audio').slice(0, 2);
+  const allProducts: any[] = await getAllProducts();
+  const featuredProducts = allProducts.filter(p => p.featured);
+  const dbCategories = await getCategories();
 
-  const categories = [
-    { name: "Laptops", icon: "💻", slug: "laptops", count: 12 },
-    { name: "Peripherals", icon: "⌨️", slug: "peripherals", count: 24 },
-    { name: "Audio Gear", icon: "🎧", slug: "audio", count: 18 },
-    { name: "Monitors", icon: "🖥️", slug: "monitors", count: 15 },
-  ];
+  const laptopProducts = allProducts.filter(p => p.category.toLowerCase() === 'laptops').slice(0, 3);
+  const audioProducts = allProducts.filter(p => p.category.toLowerCase() === 'audio').slice(0, 3);
+  const monitorProducts = allProducts.filter(p => p.category.toLowerCase() === 'monitors').slice(0, 3);
+
+  const categoryIcons: Record<string, string> = {
+    "laptops": "💻",
+    "audio": "🎧",
+    "monitors": "🖥️",
+    "peripherals": "⌨️",
+    "general": "📦",
+    "appliances": "🏠",
+    "electronics": "⚡"
+  };
+
+  const categories = dbCategories.map(cat => ({
+    ...cat,
+    icon: categoryIcons[cat.slug] || "🏷️"
+  }));
 
   return (
     <div>
@@ -82,7 +94,7 @@ export default async function Home() {
           </div>
 
           <div className={styles.productGrid}>
-            {featuredProducts.slice(0, 8).map((product) => (
+            {allProducts.slice(0, 12).map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -104,6 +116,27 @@ export default async function Home() {
                 <h2>Best <span className="text-gradient">Audio Gear</span></h2>
                 <p>Crisp sound, deep bass, and total immersion. Discover our top picks for audiophiles.</p>
                 <Link href="/categories/audio" className="btn btn-primary" style={{ background: 'linear-gradient(135deg, #ec4899 0%, #6366f1 100%)' }}>Shop Audio Gear →</Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Category Spotlight - Monitors */}
+      {monitorProducts.length > 0 && (
+        <section className={styles.spotlight}>
+          <div className="container">
+            <div className={styles.spotlightCard}>
+              <div className={styles.spotlightText}>
+                <span className={styles.catBadge} style={{ background: 'rgba(52, 211, 153, 0.1)', color: '#10b981' }}>Crystal Clear</span>
+                <h2>Pro <span className="text-gradient">Monitors</span></h2>
+                <p>Boost your productivity and gaming with our high-refresh rate display picks.</p>
+                <Link href="/categories/monitors" className="btn btn-primary" style={{ background: 'linear-gradient(135deg, #10b981 0%, #3b82f6 100%)' }}>See All Monitors →</Link>
+              </div>
+              <div className={styles.spotlightProducts}>
+                {monitorProducts.slice(0, 2).map(product => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
               </div>
             </div>
           </div>
