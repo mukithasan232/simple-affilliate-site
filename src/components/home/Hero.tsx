@@ -6,6 +6,10 @@ export default function Hero() {
         <section className={styles.hero}>
             <div className="container">
                 <div className={styles.content}>
+                    <div className={styles.saleBanner}>
+                        <span className={styles.pulse}></span>
+                        Flash Sale: Up to 40% Off Premium Gear
+                    </div>
                     <h1 className={styles.title}>
                         The Ultimate Guide to <span className="text-gradient">Premium Gear</span> & Daily Deals
                     </h1>

@@ -66,6 +66,69 @@
   font-weight: 500;
 }
 
+.spotlight {
+  padding: 8rem 0;
+}
+
+.spotlightCard {
+  background: var(--bg-card);
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.1) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-3xl);
+  padding: 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.spotlightText .catBadge {
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+.spotlightText h2 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.spotlightText p {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+  line-height: 1.5;
+}
+
+.spotlightProducts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .spotlightCard {
+    grid-template-columns: 1fr;
+    padding: 3rem;
+    text-align: center;
+  }
+
+  .spotlightText h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .spotlightProducts {
+    grid-template-columns: 1fr;
+  }
+}
+
 .deals {
   padding: 8rem 0;
   background: linear-gradient(to bottom, transparent, rgba(99, 102, 241, 0.03), transparent);
@@ -96,8 +159,15 @@
 
 .productGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2.5rem;
+}
+
+@media (max-width: 640px) {
+  .productGrid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
 }
 
 /* Trust Section */

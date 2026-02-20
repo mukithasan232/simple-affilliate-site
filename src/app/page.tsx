@@ -6,9 +6,13 @@ import ComparisonTable from "@/components/ui/ComparisonTable";
 import blogPosts from "@/data/blog.json";
 import Newsletter from "@/components/ui/Newsletter";
 import { getFeaturedProducts } from "@/lib/products";
+import Benefits from "@/components/home/Benefits";
+import Testimonials from "@/components/home/Testimonials";
 
 export default async function Home() {
   const featuredProducts: any[] = await getFeaturedProducts();
+  const laptopProducts = featuredProducts.filter(p => p.category.toLowerCase() === 'laptops').slice(0, 2);
+  const audioProducts = featuredProducts.filter(p => p.category.toLowerCase() === 'audio').slice(0, 2);
 
   const categories = [
     { name: "Laptops", icon: "💻", slug: "laptops", count: 12 },
@@ -22,9 +26,15 @@ export default async function Home() {
       <Hero />
 
       {/* Featured Categories */}
+      <Benefits />
+
+      {/* Featured Categories */}
       <section className={styles.categories}>
         <div className="container">
-          <h2 className="section-title">Explore by <span className="text-gradient">Category</span></h2>
+          <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+            <h2 className="section-title">Shop by <span className="text-gradient">Department</span></h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', marginTop: '-1.5rem' }}>Find exactly what you need in our expert-curated categories.</p>
+          </div>
           <div className={styles.categoryGrid}>
             {categories.map((cat) => (
               <Link href={`/categories/${cat.slug}`} key={cat.slug} className={styles.categoryCard}>
@@ -36,6 +46,27 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* Category Spotlight - Laptops */}
+      {laptopProducts.length > 0 && (
+        <section className={styles.spotlight}>
+          <div className="container">
+            <div className={styles.spotlightCard}>
+              <div className={styles.spotlightText}>
+                <span className={styles.catBadge}>Best for Performance</span>
+                <h2>Premium <span className="text-gradient">Laptops</span></h2>
+                <p>From ultrabooks to gaming beasts, we&apos;ve tested the top performers for 2025.</p>
+                <Link href="/categories/laptops" className="btn btn-primary">See All Laptops →</Link>
+              </div>
+              <div className={styles.spotlightProducts}>
+                {laptopProducts.map(product => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Today's Deals */}
       <section id="deals" className={styles.deals}>
@@ -51,21 +82,61 @@ export default async function Home() {
           </div>
 
           <div className={styles.productGrid}>
-            {featuredProducts.map((product) => (
+            {featuredProducts.slice(0, 8).map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Comparison Section */}
-          <div style={{ marginTop: '6rem' }}>
-            <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-              <h2 className="section-title">The <span className="text-gradient">Showdown</span></h2>
-              <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem' }}>How the top contenders stack up against each other.</p>
+      {/* Category Spotlight - Audio Gear */}
+      {audioProducts.length > 0 && (
+        <section className={styles.spotlight} style={{ background: 'var(--bg-body)' }}>
+          <div className="container">
+            <div className={styles.spotlightCard} style={{ background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, transparent 100%)' }}>
+              <div className={styles.spotlightProducts}>
+                {audioProducts.map(product => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+              <div className={styles.spotlightText}>
+                <span className={styles.catBadge} style={{ background: 'rgba(236, 72, 153, 0.1)', color: '#ec4899' }}>Immersive Audio</span>
+                <h2>Best <span className="text-gradient">Audio Gear</span></h2>
+                <p>Crisp sound, deep bass, and total immersion. Discover our top picks for audiophiles.</p>
+                <Link href="/categories/audio" className="btn btn-primary" style={{ background: 'linear-gradient(135deg, #ec4899 0%, #6366f1 100%)' }}>Shop Audio Gear →</Link>
+              </div>
             </div>
-            <ComparisonTable
-              products={featuredProducts.slice(0, 3)}
-              title="Best Value Comparison"
-            />
+          </div>
+        </section>
+      )}
+
+      {/* Comparison Section */}
+      <section className={styles.comparison}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2 className="section-title">The <span className="text-gradient">Showdown</span></h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem' }}>How the top contenders stack up against each other.</p>
+          </div>
+          <ComparisonTable
+            products={featuredProducts.slice(0, 3)}
+            title="Best Value Comparison"
+          />
+        </div>
+      </section>
+
+      <Testimonials />
+
+      {/* Trending Now */}
+      <section className={styles.deals} style={{ background: 'rgba(99, 102, 241, 0.02)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2 className="section-title">Trending <span className="text-gradient">Products</span></h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', marginTop: '-1.5rem' }}>Most popular items based on our reader data.</p>
+          </div>
+          <div className={styles.productGrid}>
+            {featuredProducts.filter(p => p.rating >= 4.7).slice(0, 4).map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
           </div>
         </div>
       </section>
@@ -98,6 +169,23 @@ export default async function Home() {
               <div className={styles.trustImgGradient}></div>
               <img src="/images/verified.png" alt="Verified Experts" className={styles.trustImg} />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* New Arrivals */}
+      <section className={styles.deals}>
+        <div className="container">
+          <div className={styles.sectionHeader}>
+            <h2 className="section-title" style={{ textAlign: "left", marginBottom: "0" }}>
+              New <span className="text-gradient">Arrivals</span>
+            </h2>
+            <Link href="/categories" className={styles.viewAll}>Explore all categories →</Link>
+          </div>
+          <div className={styles.productGrid}>
+            {featuredProducts.slice(-4).map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
           </div>
         </div>
       </section>

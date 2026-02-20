@@ -1,129 +1,343 @@
 [
     {
-        "title": "FoodSaver PowerVac Compact Vacuum Sealing Machine Stainless Steel & Black Vertical Storage VS0150 | Preserves freshness reduces bag waste for both dry and wet food",
+        "id": "p1",
+        "title": "FoodSaver PowerVac Compact Vacuum Sealing Machine",
+        "slug": "foodsaver-powervac-compact-vacuum-sealer",
         "price": 69.99,
         "oldPrice": 99.99,
+        "discount": 30,
         "rating": 4.2,
         "images": [
             "https://m.media-amazon.com/images/I/819xzwt4N0L._AC_SY300_SX300_QL70_ML2_.jpg"
         ],
-        "specifications": {
-            "Long-lasting Freshness": "Keeps food fresh in the freezer up to 5x longer, preventing freezer burn",
-            "Space-efficient": "Stores vertically to save valuable countertop space",
-            "Less Bag Waste": "Seals with 35% less bag waste compared to previous FoodSaver models",
-            "Customizable Settings": "Dry and Moist settings ensure an airtight seal for different types of food",
-            "Additional Features": "Built-in alignment tray for correct bag placement; can be connected to a handheld sealer"
-        },
-        "affiliateLink": "https://www.amazon.com/FoodSaver-VS0150-PowerVac-Compact-Vertical/dp/B08BF3GB5Q?pd_rd_w=Xmr6w&content-id=amzn1.sym.d953c62f-7a9e-4710-a1de-5a2dfe30825a&pf_rd_p=d953c62f-7a9e-4710-a1de-5a2dfe30825a&pf_rd_r=8F02PDNZJSTV6QXNP2G5&pd_rd_wg=ZAs7Y&pd_rd_r=3fb11563-fed9-4936-b2e7-d890e6b2efab&pd_rd_i=B08BF3GB5Q&th=1&linkCode=ll2&tag=codernestdigi-20&linkId=9f01ee50785333d6b89f63c822416f05&language=en_US&ref_=as_li_ss_tl",
-        "category": "General",
-        "featured": false,
-        "badge": "Today's featured deals",
+        "category": "Appliances",
+        "featured": true,
+        "badge": "Hot Deal",
         "pros": [
-            "High quality",
-            "Reliable performance"
+            "Space-saving",
+            "Quiet operation"
         ],
         "cons": [
-            "May be expensive for some",
-            "Limited stock"
+            "Bags can be pricey"
         ],
-        "description": "A comprehensive look at the FoodSaver PowerVac Compact Vacuum Sealing Machine Stainless Steel & Black Vertical Storage VS0150 | Preserves freshness reduces bag waste for both dry and wet food. It offers great value and performance for its category.",
+        "description": "Compact and powerful vacuum sealer.",
+        "affiliateLink": "https://www.amazon.com/dp/B08BF3GB5Q",
+        "specifications": {
+            "Weight": "2.5 lbs",
+            "Dimensions": "14 x 4 x 3 inches"
+        },
         "faqs": [
             {
-                "q": "Is it worth the price?",
-                "a": "Based on our analysis, yes it offers solid value."
+                "q": "Does it work with jar sealers?",
+                "a": "Yes, it has an accessory port."
             }
-        ],
-        "id": "p1",
-        "slug": "foodsaver-powervac-compact-vacuum-sealing-machine-stainless-steel-black-vertical-storage-vs0150-preserves-freshness-reduces-bag-waste-for-both-dry-and-wet-food"
+        ]
     },
     {
-        "title": "PRETTYGARDEN Women's 2 Piece Outfit",
-        "price": 35.99,
-        "oldPrice": 45.99,
+        "id": "p2",
+        "title": "Sony WH-1000XM5 Wireless Noise Canceling Headphones",
+        "slug": "sony-wh1000xm5-headphones",
+        "price": 348.00,
+        "oldPrice": 399.99,
+        "discount": 13,
+        "rating": 4.8,
+        "images": [
+            "https://m.media-amazon.com/images/I/61+9MzPdX6L._AC_SX679_.jpg"
+        ],
+        "category": "Audio",
+        "featured": true,
+        "badge": "Best Overall",
+        "pros": [
+            "Industry-leading ANC",
+            "Amazing sound"
+        ],
+        "cons": [
+            "Doesn't fold"
+        ],
+        "description": "The best noise-canceling headphones you can buy.",
+        "affiliateLink": "https://www.amazon.com/dp/B09XS7JWHH",
+        "specifications": {
+            "Battery": "30 hours",
+            "Charging": "USB-C"
+        },
+        "faqs": [
+            {
+                "q": "Are they waterproof?",
+                "a": "No, they are not rated for water resistance."
+            }
+        ]
+    },
+    {
+        "id": "p3",
+        "title": "Acer Aspire 5 Laptop | 15.6\" Full HD IPS",
+        "slug": "acer-aspire-5-laptop",
+        "price": 379.99,
+        "oldPrice": 499.99,
+        "discount": 24,
         "rating": 4.5,
         "images": [
-            "https://m.media-amazon.com/images/I/61tC-dGZ0LL._AC_SY741_.jpg"
+            "https://m.media-amazon.com/images/I/718D-4R8UCL._AC_SX679_.jpg"
         ],
-        "specifications": {},
-        "affiliateLink": "https://www.amazon.com/PRETTYGARDEN-Outfits-Sleeve-Sweatshirts-Lounge/dp/B0CHRF7K19?pd_rd_w=Xmr6w&content-id=amzn1.sym.d953c62f-7a9e-4710-a1de-5a2dfe30825a&pf_rd_p=d953c62f-7a9e-4710-a1de-5a2dfe30825a&pf_rd_r=8F02PDNZJSTV6QXNP2G5&pd_rd_wg=ZAs7Y&pd_rd_r=3fb11563-fed9-4936-b2e7-d890e6b2efab&pd_rd_i=B0CHRF7K19&th=1&psc=1",
-        "category": "General",
-        "featured": false,
-        "badge": "Best Seller",
-        "pros": [
-            "Comfortable fit",
-            "Stylish design"
-        ],
-        "cons": [
-            "Sizing varies"
-        ],
-        "description": "A stylish and comfortable 2-piece outfit perfect for lounging or casual wear.",
-        "faqs": [
-            {
-                "q": "Is it true to size?",
-                "a": "Most customers report it fits true to size."
-            }
-        ],
-        "id": "p2",
-        "slug": "prettygarden-womens-2-piece-outfit"
-    },
-    {
-        "title": "Acer Aspire Copilot+ Laptop",
-        "price": 699.99,
-        "oldPrice": 799.99,
-        "rating": 4.3,
-        "images": [
-            "https://m.media-amazon.com/images/I/71S8U9VzLTL._AC_SX679_.jpg"
-        ],
-        "specifications": {},
-        "affiliateLink": "https://www.amazon.com/Aspire-Copilot-WUXGA-Display-Processor/dp/B0DWNLN3KP?pd_rd_w=cAhJR&content-id=amzn1.sym.d953c62f-7a9e-4710-a1de-5a2dfe30825a&pf_rd_p=d953c62f-7a9e-4710-a1de-5a2dfe30825a&pf_rd_r=51HPS22T06VR81EEGT08&pd_rd_wg=O4MlH&pd_rd_r=f8fad904-81bb-4d97-a1a3-c748ccc85f36&pd_rd_i=B0DWNLN3KP&linkCode=ll2&tag=codernestdigi-20&linkId=5bcc2c1cebe4f810aec4525981a56011&language=en_US&ref_=as_li_ss_tl",
-        "category": "Electronics",
+        "category": "Laptops",
         "featured": true,
-        "badge": "New Arrival",
+        "badge": "Best Budget",
         "pros": [
-            "Fast processor",
-            "Great display"
+            "Great value",
+            "Solid build"
         ],
         "cons": [
-            "Average battery life"
+            "Display could be brighter"
         ],
-        "description": "Experience next-gen performance with the Acer Aspire Copilot+ Laptop.",
+        "description": "Perfect everyday laptop for students and home office.",
+        "affiliateLink": "https://www.amazon.com/dp/B0BSHF6BBS",
+        "specifications": {
+            "RAM": "8GB",
+            "Storage": "256GB SSD"
+        },
         "faqs": [
             {
-                "q": "Does it have a backlit keyboard?",
-                "a": "Yes, it comes with a backlit keyboard."
+                "q": "Can I upgrade the RAM?",
+                "a": "Yes, it has one open slot."
             }
-        ],
-        "id": "p3",
-        "slug": "acer-aspire-copilot-laptop"
+        ]
     },
     {
-        "title": "SAMSUNG 40-Inch Security Monitor",
-        "price": 299.99,
-        "oldPrice": 349.99,
-        "rating": 4.6,
+        "id": "p4",
+        "title": "Logitech MX Master 3S Wireless Mouse",
+        "slug": "logitech-mx-master-3s",
+        "price": 99.00,
+        "oldPrice": 109.99,
+        "discount": 10,
+        "rating": 4.9,
         "images": [
-            "https://m.media-amazon.com/images/I/81PKPqjN8qL._AC_SX679_.jpg"
+            "https://m.media-amazon.com/images/I/61vS4l67p9L._AC_SX679_.jpg"
         ],
-        "specifications": {},
-        "affiliateLink": "https://www.amazon.com/SAMSUNG-40-Inch-Object-Tracking-Security/dp/B0DXN1CFFR?pf_rd_r=51HPS22T06VR81EEGT08&pf_rd_p=3ad18919-c59e-4977-8ce1-315d93403f16&th=1&linkCode=ll2&tag=codernestdigi-20&linkId=fa8dcb14aa83ff60f5f334adef623ad6&language=en_US&ref_=as_li_ss_tl",
-        "category": "Electronics",
-        "featured": false,
+        "category": "Peripherals",
+        "featured": true,
+        "badge": "Pro Choice",
+        "pros": [
+            "Ergonomic",
+            "Infinite scroll"
+        ],
+        "cons": [
+            "Right-hand only"
+        ],
+        "description": "The ultimate productivity mouse.",
+        "affiliateLink": "https://www.amazon.com/dp/B09HM94VDS",
+        "specifications": {
+            "DPI": "8000",
+            "Buttons": "7"
+        },
+        "faqs": [
+            {
+                "q": "Does it work with iPad?",
+                "a": "Yes, via Bluetooth."
+            }
+        ]
+    },
+    {
+        "id": "p5",
+        "title": "ASUS ROG Zephyrus G14 Gaming Laptop",
+        "slug": "asus-rog-zephyrus-g14",
+        "price": 1399.99,
+        "oldPrice": 1599.99,
+        "discount": 12,
+        "rating": 4.7,
+        "images": [
+            "https://m.media-amazon.com/images/I/717S8S6L2+L._AC_SX679_.jpg"
+        ],
+        "category": "Laptops",
+        "featured": true,
         "badge": "Top Rated",
         "pros": [
-            "Clear resolution",
-            "Reliable security features"
+            "Compact power",
+            "Great screen"
         ],
         "cons": [
-            "Requires setup"
+            "Gets hot under load"
         ],
-        "description": "Keep your property safe with the high-resolution SAMSUNG 40-Inch Security Monitor.",
+        "description": "The best 14-inch gaming laptop.",
+        "affiliateLink": "https://www.amazon.com/dp/B0C2719W8S",
+        "specifications": {
+            "GPU": "RTX 4060",
+            "CPU": "Ryzen 9"
+        },
         "faqs": [
             {
-                "q": "Is it weather resistant?",
-                "a": "This model is designed for indoor use."
+                "q": "Does it have a webcam?",
+                "a": "Yes, 1080p."
             }
+        ]
+    },
+    {
+        "id": "p6",
+        "title": "Samsung Odyssey G7 32-inch Gaming Monitor",
+        "slug": "samsung-odyssey-g7",
+        "price": 549.99,
+        "oldPrice": 799.99,
+        "discount": 31,
+        "rating": 4.6,
+        "images": [
+            "https://m.media-amazon.com/images/I/81IuS9pL-PL._AC_SX679_.jpg"
         ],
-        "id": "p4",
-        "slug": "samsung-40-inch-security-monitor"
+        "category": "Monitors",
+        "featured": true,
+        "badge": "Immersive",
+        "pros": [
+            "240Hz refresh",
+            "1000R curve"
+        ],
+        "cons": [
+            "Large footprint"
+        ],
+        "description": "Incredible curved gaming monitor.",
+        "affiliateLink": "https://www.amazon.com/dp/B088HJ4ZLM",
+        "specifications": {
+            "Resolution": "2K",
+            "Panel": "VA"
+        },
+        "faqs": [
+            {
+                "q": "Is it G-Sync compatible?",
+                "a": "Yes."
+            }
+        ]
+    },
+    {
+        "id": "p7",
+        "title": "Bose QuietComfort Ultra Wireless Noise Cancelling Headphones",
+        "slug": "bose-quietcomfort-ultra",
+        "price": 429.00,
+        "oldPrice": 429.00,
+        "discount": 0,
+        "rating": 4.7,
+        "images": [
+            "https://m.media-amazon.com/images/I/51v68m+vKQL._AC_SX679_.jpg"
+        ],
+        "category": "Audio",
+        "featured": true,
+        "badge": "Premium",
+        "pros": [
+            "Best-in-class comfort",
+            "Immersive audio"
+        ],
+        "cons": [
+            "Expensive"
+        ],
+        "description": "Bose's most advanced headphones yet.",
+        "affiliateLink": "https://www.amazon.com/dp/B0CCZ267Z6",
+        "specifications": {
+            "Connectivity": "Bluetooth 5.3",
+            "Battery": "24 hours"
+        },
+        "faqs": [
+            {
+                "q": "Do they support multipoint?",
+                "a": "Yes, they can connect to two devices."
+            }
+        ]
+    },
+    {
+        "id": "p8",
+        "title": "Apple MacBook Air 13-inch M3 Chip",
+        "slug": "macbook-air-m3",
+        "price": 999.00,
+        "oldPrice": 1099.00,
+        "discount": 9,
+        "rating": 4.9,
+        "images": [
+            "https://m.media-amazon.com/images/I/71ItMZ7U+ML._AC_SX679_.jpg"
+        ],
+        "category": "Laptops",
+        "featured": true,
+        "badge": "Editor's Choice",
+        "pros": [
+            "Incredible battery",
+            "Powerful M3 chip"
+        ],
+        "cons": [
+            "Limited ports"
+        ],
+        "description": "The best laptop for most people.",
+        "affiliateLink": "https://www.amazon.com/dp/B0CX2169S7",
+        "specifications": {
+            "Chip": "M3",
+            "RAM": "8GB/16GB",
+            "Storage": "256GB/512GB"
+        },
+        "faqs": [
+            {
+                "q": "Can it run Windows?",
+                "a": "Only via virtualization like Parallels."
+            }
+        ]
+    },
+    {
+        "id": "p9",
+        "title": "Keychron K2 Wireless Mechanical Keyboard",
+        "slug": "keychron-k2",
+        "price": 79.99,
+        "oldPrice": 89.99,
+        "discount": 11,
+        "rating": 4.6,
+        "images": [
+            "https://m.media-amazon.com/images/I/71Y8K9O2L+L._AC_SX679_.jpg"
+        ],
+        "category": "Peripherals",
+        "featured": false,
+        "badge": "Typist Favorite",
+        "pros": [
+            "Compact layout",
+            "Great build quality"
+        ],
+        "cons": [
+            "High profile"
+        ],
+        "description": "Versatile mechanical keyboard for Mac and Windows.",
+        "affiliateLink": "https://www.amazon.com/dp/B07QBPCXSR",
+        "specifications": {
+            "Backlight": "RGB",
+            "Switches": "Gateron Brown"
+        },
+        "faqs": [
+            {
+                "q": "Is it hotswappable?",
+                "a": "This version is not, but a hotswap version is available."
+            }
+        ]
+    },
+    {
+        "id": "p10",
+        "title": "LG C3 65-inch Class OLED evo 4K Smart TV",
+        "slug": "lg-c3-oled-tv",
+        "price": 1596.99,
+        "oldPrice": 1999.99,
+        "discount": 20,
+        "rating": 4.8,
+        "images": [
+            "https://m.media-amazon.com/images/I/81pYVnIuG6L._AC_SX679_.jpg"
+        ],
+        "category": "Electronics",
+        "featured": true,
+        "badge": "Best TV",
+        "pros": [
+            "Perfect blacks",
+            "Great for gaming"
+        ],
+        "cons": [
+            "Burn-in risk over time"
+        ],
+        "description": "The gold standard for OLED TVs.",
+        "affiliateLink": "https://www.amazon.com/dp/B0BVXB96Y5",
+        "specifications": {
+            "Display": "OLED",
+            "Refresh Rate": "120Hz"
+        },
+        "faqs": [
+            {
+                "q": "Does it have HDMI 2.1?",
+                "a": "Yes, all 4 ports are HDMI 2.1."
+            }
+        ]
     }
 ]
